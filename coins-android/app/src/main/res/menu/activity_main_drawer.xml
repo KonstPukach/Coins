@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/drawer_navigation_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_coins"
+            android:icon="@drawable/ic_baseline_attach_money_24"
+            android:checked="true"
+            android:title="@string/drawer_coins" />
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/baseline_newspaper_24"
+            android:title="@string/drawer_news" />
+        <item
+            android:id="@+id/nav_market_stats"
+            android:icon="@drawable/ic_baseline_bar_chart_24"
+            android:title="@string/drawer_market_stats" />
+        <item
+            android:id="@+id/nav_converter"
+            android:icon="@drawable/ic_baseline_swap_horiz_24"
+            android:title="@string/drawer_converter" />
+        <item
+            android:id="@+id/nav_alerts"
+            android:icon="@drawable/ic_baseline_notifications_24"
+            android:title="@string/drawer_alerts" />
+    </group>
+
+    <item android:title="@string/drawer_section_communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_baseline_share_24"
+                android:title="@string/drawer_share_app" />
+        </menu>
+    </item>
+</menu>

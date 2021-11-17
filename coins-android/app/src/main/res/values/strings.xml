@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">Coins</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="generic_error_message">An error occurred or no Internet connection</string>
+
+    <string name="share_chooser_title">Share with …</string>
+    <string name="share_app_chooser_title">Share app with …</string>
+
+    <string name="unable_to_open_browser">Unable to view in browser</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="global_stats_card_title">Global Stats</string>
+    <string name="unable_get_data_error">Unable to get data :(</string>
+    <string name="total_market_cap_caption">Total market capitalization</string>
+    <string name="global_stats_total_24h_volume_caption">Total 24h volume</string>
+    <string name="global_data_bitcoin_percentage_caption">Bitcoin percentage of market</string>
+    <string name="global_stats_active_currencies_caption">Active currencies</string>
+    <string name="global_stats_active_assets_caption">Active assets</string>
+    <string name="global_stats_active_markets_caption">Active markets</string>
+    <string name="market_capitalization_share_title">Market capitalization share</string>
+    <string name="market_cap_share_history_title">Market cap share history</string>
+    <string name="_24h_caption">24H</string>
+    <string name="week_caption">Week</string>
+    <string name="month_caption">Month</string>
+    <string name="year_caption">Year</string>
+    <string name="all_time_caption">All</string>
+
+    <string name="exchange_rate_format_str">Exchange rate: %s</string>
+    <string name="search_hint">Search</string>
+    <string name="currency_invalid_value">Invalid value</string>
+    <string name="generic_empty_state_text">Seems like there is an empty list</string>
+    <string name="alert_low_limit_format">Lower limit: %s</string>
+    <string name="alert_high_limit_format">Upper limit: %s</string>
+    <string name="title_activity_create_alert">Create Alert</string>
+    <string name="create_alert_low_limit_hint">Lower Limit</string>
+    <string name="create_alert_high_limit_hint">Upper Limit</string>
+
+    <string name="generic_invalid_value_message">Invalid value</string>
+    <string name="generic_invalid_data_message">Invalid data</string>
+    <string name="no_firebase_token_message">No app token. Try to reinstall the app</string>
+    <string name="low_limit_above_high_limit">Lower limit should be less than upper limit</string>
+    <string name="current_price_format_str">Current price: %s</string>
+    <string name="menu_item_sync">Sync</string>
+    <string name="all_coins_page_title">All</string>
+    <string name="favorite_coins_page_title">Favorite</string>
+    <string name="top_10_coins_page_title">Top 10</string>
+    <string name="popular_section_title">Popular</string>
+    <string name="gainers_section_title">Gainers</string>
+    <string name="losers_secction_title">Losers</string>
+    <string name="drawer_share_app">Share App</string>
+    <string name="drawer_converter">Converter</string>
+    <string name="drawer_alerts">Alerts</string>
+    <string name="drawer_market_stats">Market stats</string>
+    <string name="drawer_news">News</string>
+    <string name="drawer_coins">Coins</string>
+    <string name="drawer_section_communicate">Communicate</string>
+
+    <string name="coin_item_price_format_str">%1$s (%2$s)</string>
+    <string name="coin_name_format_str">%1$s (%2$s)</string>
+
+    <string name="order_by_menu_item">Order By</string>
+    <string name="search_menu_item">Search</string>
+
+    <string name="dialog_sort_title">Sort By</string>
+    <string name="dialog_sort_by_cap">Capitalization</string>
+    <string name="dialog_sort_by_name">Name</string>
+    <string name="dialog_sort_by_price">Price</string>
+    <string name="details_tab_title">Details</string>
+    <string name="chart_tab_title">Chart</string>
+    <string name="action_favorite">Favorite</string>
+    <string name="coin_details_price_caption">Price</string>
+    <string name="coin_details_price_btc_caption">Price (BTC)</string>
+    <string name="coin_details_24h_volume_caption">24h Volume</string>
+    <string name="coin_details_market_cap_caption">Market Cap</string>
+    <string name="coin_details_available_supply_caption">Available Supply</string>
+    <string name="coin_details_total_supply_caption">Total Supply</string>
+    <string name="coin_details_change_1h_caption">Change 1h</string>
+    <string name="coin_details_change_24h_caption">Change 24h</string>
+    <string name="coin_details_change_7d_caption">Change 7d</string>
+
+    <string name="currencies_not_ready">Currencies not ready :(</string>
+    <string name="real_time_price_card_title">Real-time price</string>
+
+    <string name="first_time_favorite_message">The coin was added to \"Favorite\" list</string>
+    <string name="first_time_unfavorite_message">The coin was removed from \"Favorite\" list</string>
+    <string name="help">Help</string>
+    <string name="got_it_caption">Got it</string>
+    <string name="alert_help_dialog_title">What is alert?</string>
+    <string name="alert_help_dialog_message">No need to manually check prices each minute. Let us to track price changes for you! Enter upper and lower price limits for desired cryptocurrency and we will notify you instantly via push notification if actual price beats the limits.</string>
+
+    <string name="alert_notification_title_format">%s price has changed!</string>
+    <string name="alert_notification_body_format">Current %1$s price is %2$s$</string>
+</resources>

@@ -1,0 +1,37 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="coin_icon_size">48dp</dimen>
+    <dimen name="line_spacing">4dp</dimen>
+    <dimen name="margin_extra_small">4dp</dimen>
+    <dimen name="card_corner_radius">2dp</dimen>
+    <dimen name="loading_list_item_height">100dp</dimen>
+    <dimen name="news_image_height">220dp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">22sp</dimen>
+    <dimen name="text_size_xxlarge">24sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_xnormal">16sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="chart_height_in_card">300dp</dimen>
+    <dimen name="chart_scale_controls_height">32dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="favorite_icon_size">44dp</dimen>
+    <dimen name="close_icon_size">40dp</dimen>
+
+    <dimen name="notification_title_margin">2dp</dimen>
+
+    <dimen name="list_content_horizontal_margin">8dp</dimen>
+    <dimen name="screen_content_horizontal_margin">16dp</dimen>
+    <dimen name="news_list_content_horizontal_margin">0dp</dimen>
+    <dimen name="market_stats_tile_content_horizontal_margin">16dp</dimen>
+</resources>
