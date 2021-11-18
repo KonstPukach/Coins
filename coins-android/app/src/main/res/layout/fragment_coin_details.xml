@@ -1,0 +1,259 @@
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.oukachkosnt.coins.ui.coins.details.coin.CoinDetailsFragment">
+
+    <!--Need to wrap CardView into other layout to prevent cutting from bottom.-->
+    <!--Seems like a bug in Android-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/screen_content_horizontal_margin"
+            android:layout_marginEnd="@dimen/screen_content_horizontal_margin"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardCornerRadius="@dimen/card_corner_radius">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium">
+
+                <LinearLayout
+                    android:id="@+id/coin_details_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/coin_details_icon"
+                        android:layout_width="@dimen/coin_icon_size"
+                        android:layout_height="@dimen/coin_icon_size"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        tools:src="@mipmap/ic_launcher"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/coin_details_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:textColor="@color/text_color_black"
+                        tools:text="Amazing very long coin name" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_below="@id/coin_details_header"
+                    android:orientation="vertical">
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_price_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_price"
+                            tools:text="1234567891111"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_price_btc_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_price_btc"
+                            tools:text="1234567891111"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_24h_volume_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_24h_volume"
+                            tools:text="1234567891111"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_market_cap_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_market_cap"
+                            tools:text="1234567891111"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_available_supply_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_available_supply"
+                            tools:text="1234567891111"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_total_supply_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_total_supply"
+                            tools:text="1234567891111"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_change_1h_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_change_1h"
+                            tools:text="1234567891111"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_change_24h_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_change_24h"
+                            tools:text="1234567891111"
+                            tools:textColor="@color/price_change_grow"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/coin_details_row">
+
+                        <TextView
+                            android:text="@string/coin_details_change_7d_caption"
+                            style="@style/coin_details_row_caption" />
+
+                        <TextView
+                            android:id="@+id/coin_details_change_7d"
+                            tools:text="1234567891111"
+                            tools:textColor="@color/price_change_fall"
+                            style="@style/coin_details_row_value" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/coin_details_timestamp"
+                        android:layout_marginTop="@dimen/margin_small"
+                        tools:text="10.10.2017 12:12"
+                        style="@style/card_timestamp_style" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/screen_content_horizontal_margin"
+            android:layout_marginEnd="@dimen/screen_content_horizontal_margin"
+            app:cardElevation="@dimen/card_elevation"
+            app:cardCornerRadius="@dimen/card_corner_radius">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium">
+
+                <TextView
+                    android:id="@+id/coin_realtime_price_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/coin_realtime_price_disconnected"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="@dimen/text_size_xxlarge"
+                    android:text="@string/real_time_price_card_title"/>
+
+                <ImageView
+                    android:id="@+id/coin_realtime_price_disconnected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:animateLayoutChanges="true"
+                    android:src="@drawable/connection_icon_selector"
+                    tools:ignore="ContentDescription" />
+
+                <TextSwitcher
+                    android:id="@+id/coin_realtime_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/coin_realtime_price_title"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    tools:text="$ 12 345.56" />
+
+                <TextView
+                    android:id="@+id/coin_realtime_price_timestamp"
+                    android:layout_below="@id/coin_realtime_price"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    tools:text="10.10.2017 12:12"
+                    style="@style/card_timestamp_style" />
+
+                <TextView
+                    android:id="@+id/coin_realprice_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/coin_realtime_price_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/generic_error_message" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

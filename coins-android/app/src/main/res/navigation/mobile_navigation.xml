@@ -5,9 +5,23 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_crypto_coins">
 
+    <action
+        android:id="@+id/action_nav_crypto_coins_to_nav_crypto_coin_details"
+        app:destination="@id/nav_crypto_coin_details" />
+
     <fragment
         android:id="@+id/nav_crypto_coins"
         android:name="com.oukachkosnt.coins.ui.coins.CryptoCoinsFragment"
-        android:label="@string/drawer_coins"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/drawer_coins" >
+    </fragment>
+
+    <activity
+        android:id="@+id/nav_crypto_coin_details"
+        android:name="com.oukachkosnt.coins.ui.coins.details.CoinDetailsPagesActivity"
+        android:label="@string/details_tab_title">
+        <argument
+            android:name="coinData"
+            app:argType="com.oukachkosnt.coins.data.domain.CryptoCoinData"
+            app:nullable="false"/>
+    </activity>
 </navigation>

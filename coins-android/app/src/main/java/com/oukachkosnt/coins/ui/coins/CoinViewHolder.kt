@@ -37,7 +37,11 @@ class CoinViewHolder(
         priceView.text          = buildPrice(data.priceUsd, data.percentChange24h)
         lastUpdatedView.text    = data.lastUpdated.formatDateTime()
         favoriteView.isSelected = data.isFavorite
-        favoriteView.setOnClickListener { onFavoriteClick(data) }
+
+        favoriteView.setOnClickListener {
+            onFavoriteClick(data)
+            it.isSelected = !it.isSelected
+        }
 
         Glide.with(iconView)
             .load(data.iconUrl)
@@ -53,15 +57,18 @@ class CoinViewHolder(
         }
 
         val context = itemView.context
-        val asString = context.getString(R.string.coin_item_price_format_str,
-                                         price.formatPriceUsd(),
-                                         getChangeArrow() + abs(change).formatPercent())
+        val asString = context.getString(
+            R.string.coin_item_price_format_str,
+            price.formatPriceUsd(),
+            getChangeArrow() + abs(change).formatPercent())
 
         return SpannableString(asString).also {
-            it.setSpan(ForegroundColorSpan(context.getColorForPriceChange(change)),
-                       asString.indexOf('(') + 1,
-                       asString.indexOf(')'),
-                       0)
+            it.setSpan(
+                ForegroundColorSpan(context.getColorForPriceChange(change)),
+                asString.indexOf('(') + 1,
+                asString.indexOf(')'),
+                0
+            )
         }
     }
 }
@@ -72,21 +79,23 @@ fun getCoinIconsPreloader(context: Context, data: List<CryptoCoinData>): Recycle
     return RecyclerViewPreloader(
         Glide.with(context),
         CoinIconPreloadProvider(context, data, iconSize),
-        FixedPreloadSizeProvider<CryptoCoinData>(iconSize, iconSize),
+        FixedPreloadSizeProvider(iconSize, iconSize),
        12
     )
 }
 
-private class CoinIconPreloadProvider(private val context: Context,
-                                      private val data: List<CryptoCoinData>,
-                                      private val overrideSize: Int)
-            : PreloadModelProvider<CryptoCoinData> {
+private class CoinIconPreloadProvider(
+    private val context: Context,
+    private val data: List<CryptoCoinData>,
+    private val overrideSize: Int
+) : PreloadModelProvider<CryptoCoinData> {
 
     override fun getPreloadItems(position: Int) = data.getOrNull(position)?.let { listOf(it) }.orEmpty()
 
     override fun getPreloadRequestBuilder(item: CryptoCoinData): RequestBuilder<*> {
-        return Glide.with(context)
-                    .load(item.iconUrl)
-                    .apply(RequestOptions().override(overrideSize))
+        return Glide
+            .with(context)
+            .load(item.iconUrl)
+            .apply(RequestOptions().override(overrideSize))
     }
 }

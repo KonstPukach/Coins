@@ -5,16 +5,24 @@
       <map>
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/drawable-v24/favorite_icon_selector.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/drawable/baseline_newspaper_24.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/drawable/connection_icon_selector.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/drawable/pressed_bg.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/drawable/pressed_bg_selector.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/drawable/transparent_bg.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/activity_coin_details.xml" value="0.29981884057971014" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/activity_main.xml" value="0.2857789855072464" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/app_bar_main.xml" value="0.2857789855072464" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/content_main.xml" value="0.23505434782608695" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/cryptocoin_list_item.xml" value="0.33489583333333334" />
+        <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/fragment_coin_details.xml" value="0.30570652173913043" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/fragment_home.xml" value="0.1828125" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/fragment_view_pager.xml" value="0.33489583333333334" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/nav_header_main.xml" value="0.2857789855072464" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/refreshable_recycler.xml" value="0.213768115942029" />
+        <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/layout/section_title_list_item.xml" value="0.3151041666666667" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
         <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/menu/main.xml" value="0.215625" />
+        <entry key="..\:/Users/PukachKS/StudioProjects/Coins/coins-android/app/src/main/res/menu/menu_coin_details.xml" value="0.33489583333333334" />
       </map>
     </option>
   </component>

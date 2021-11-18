@@ -1,5 +1,6 @@
 package com.oukachkosnt.coins.ui.coins.base
 
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.oukachkosnt.coins.FloatingActionButtonProvider
@@ -7,6 +8,7 @@ import com.oukachkosnt.coins.R
 import com.oukachkosnt.coins.data.domain.CryptoCoinData
 import com.oukachkosnt.coins.mvp.list.ListMvpFragment
 import com.oukachkosnt.coins.ui.coins.CoinViewHolder
+import com.oukachkosnt.coins.ui.coins.details.CoinDetailsPagesActivityDirections
 import com.oukachkosnt.coins.ui.coins.getCoinIconsPreloader
 
 abstract class SimpleCoinsListFragment<P: SimpleCoinsListPresenter<out SimpleCoinsListView>>
@@ -14,14 +16,12 @@ abstract class SimpleCoinsListFragment<P: SimpleCoinsListPresenter<out SimpleCoi
 
     final override fun createAdapter() = CoinsAdapter(
         layoutSupplier    = { R.layout.cryptocoin_list_item },
-        holderSupplier    = { CoinViewHolder(it, {  }) },
-        itemClickListener = { _, data -> /* */ }
+        holderSupplier    = { CoinViewHolder(it, { }) },
+        itemClickListener = { _, data -> findNavController().navigate(CoinDetailsPagesActivityDirections.actionNavCryptoCoinsToNavCryptoCoinDetails(data)) }
     )
 
     final override fun initRecycler(recycler: RecyclerView) {
-        resources.getDimensionPixelSize(R.dimen.margin_small)
-                .let { recycler.setPadding(0, it, 0, it) }
-
+        resources.getDimensionPixelSize(R.dimen.margin_small).let { recycler.setPadding(0, it, 0, it) }
         recycler.itemAnimator?.changeDuration = 0
     }
 

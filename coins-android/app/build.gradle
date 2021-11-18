@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -58,4 +59,16 @@ dependencies {
     implementation("com.github.bumptech.glide:recyclerview-integration:4.7.1") {
         transitive = false
     }
+
+    implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+
+    implementation ('io.socket:socket.io-client:1.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 }

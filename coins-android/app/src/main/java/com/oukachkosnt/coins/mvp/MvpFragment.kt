@@ -22,10 +22,11 @@ abstract class MvpFragment<T : MvpPresenter<out MvpView>>(@LayoutRes private val
     protected abstract fun createPresenter(): T
     protected abstract fun bindView(rootView: View)
 
-    final override fun onCreateView(inflater: LayoutInflater,
-                                    container: ViewGroup?,
-                                    savedInstanceState: Bundle?): View
-            = inflater.inflate(layoutResId, container, false)
+    final override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = inflater.inflate(layoutResId, container, false)
 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         bindView(view)

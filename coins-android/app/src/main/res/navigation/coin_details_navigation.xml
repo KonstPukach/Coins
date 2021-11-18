@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coin_details_navigation"
+    app:startDestination="@+id/nav_coin_details">
+
+    <activity
+        android:id="@+id/nav_coin_details"
+        android:name="com.oukachkosnt.coins.ui.coins.details.CoinDetailsPagesActivity"
+        android:label="@string/details_tab_title" >
+        <argument
+            android:name="coinData"
+            app:argType="com.oukachkosnt.coins.data.domain.CryptoCoinData"
+            app:nullable="false"/>
+    </activity>
+
+</navigation>
