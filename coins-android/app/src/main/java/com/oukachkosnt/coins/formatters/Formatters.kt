@@ -3,6 +3,7 @@ package com.oukachkosnt.coins.formatters
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 private val dateTimeFormatter = SimpleDateFormat("dd.MM.yyyy 'at' HH:mm", Locale.US)
 private val timeFormatter = SimpleDateFormat("'at' HH:mm:ss", Locale.US)
@@ -26,3 +27,13 @@ fun Double.formatPercent(): String = "%.2f %%".format(this)
 fun Double.formatPrice(maxFractionDigits: Int? = null) = formatPriceUsd(maxFractionDigits).substring(1)
 
 fun Double.formatPriceUsdAutoprecision() = formatPriceUsd(if (this > 1) 2 else 12)
+
+fun Date.formatLabel(scale: Long): String {
+    val formatter = when {
+        scale < TimeUnit.DAYS.toMillis(1)  -> SimpleDateFormat("HH:mm", Locale.US)
+        scale < TimeUnit.DAYS.toMillis(30) -> SimpleDateFormat("dd.MM", Locale.US)
+        else                                       -> SimpleDateFormat("MM/yy", Locale.US)
+    }
+
+    return formatter.format(this)
+}

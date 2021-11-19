@@ -16,4 +16,8 @@ object ApiProvider {
 
 
     val newsApi: NewsApi by lazy { getRetrofit().create(NewsApi::class.java) }
+
+    val marketStatsApi: MarketStatsApi by lazy { getRetrofit().create(MarketStatsApi::class.java) }
+
+    val chartsApi: ChartsApi by lazy { getRetrofit().create(ChartsApi::class.java) }
 }

@@ -9,7 +9,7 @@
 //import by.maximka.tofico.mvp.MvpView
 //import by.maximka.tofico.mvp.list.ViewState
 //import by.maximka.tofico.preferences.Preferences
-//import by.maximka.tofico.ui.charts.ChartTextMarker
+//import com.oukachkosnt.coins.ui.charts.ChartTextMarker
 //import by.maximka.tofico.ui.coins.details.chart.CoinPriceChartPresenter
 //import com.oukachkosnt.coins.ui.coins.details.CoinIdProvider
 //import by.maximka.tofico.ui.dialogs.SelectRealCurrencyDialogFragment

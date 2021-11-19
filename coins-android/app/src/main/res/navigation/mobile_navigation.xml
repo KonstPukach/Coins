@@ -21,6 +21,12 @@
         android:label="@string/tofico_news_share_title" >
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_market_stats"
+        android:name="com.oukachkosnt.coins.ui.stats.MarketStatsFragment"
+        android:label="@string/market_cap_share_history_title" >
+    </fragment>
+
     <activity
         android:id="@+id/nav_crypto_coin_details"
         android:name="com.oukachkosnt.coins.ui.coins.details.CoinDetailsPagesActivity"

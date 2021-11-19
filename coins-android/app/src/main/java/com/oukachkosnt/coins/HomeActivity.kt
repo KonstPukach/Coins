@@ -10,11 +10,17 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
+import com.google.android.material.appbar.AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.oukachkosnt.coins.databinding.ActivityMainBinding
 
-class HomeActivity : AppCompatActivity(), FloatingActionButtonProvider, TabLayoutProvider {
+class HomeActivity : AppCompatActivity(),
+    FloatingActionButtonProvider,
+    TabLayoutProvider,
+    CollapsingToolbarOwner {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -35,7 +41,8 @@ class HomeActivity : AppCompatActivity(), FloatingActionButtonProvider, TabLayou
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_coins,
-                R.id.nav_news
+                R.id.nav_news,
+                R.id.nav_market_stats
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -59,6 +66,12 @@ class HomeActivity : AppCompatActivity(), FloatingActionButtonProvider, TabLayou
     override fun getActionButton(): FloatingActionButton = binding.appBarMain.fab
 
     override fun getTabLayout(): TabLayout = binding.appBarMain.tabs
+
+    override fun enableCollapsingToolbar(isEnabled: Boolean) {
+        with (binding.appBarMain.toolbar.layoutParams as AppBarLayout.LayoutParams) {
+            scrollFlags = if (isEnabled) SCROLL_FLAG_SCROLL or SCROLL_FLAG_ENTER_ALWAYS else 0
+        }
+    }
 }
 
 interface FloatingActionButtonProvider {
@@ -67,4 +80,8 @@ interface FloatingActionButtonProvider {
 
 interface TabLayoutProvider {
     fun getTabLayout(): TabLayout
+}
+
+interface CollapsingToolbarOwner {
+    fun enableCollapsingToolbar(isEnabled: Boolean)
 }

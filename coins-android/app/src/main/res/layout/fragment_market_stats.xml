@@ -1,0 +1,304 @@
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_refresh"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardCornerRadius="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/market_stats_tile_content_horizontal_margin"
+                    android:layout_marginEnd="@dimen/market_stats_tile_content_horizontal_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_medium"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textColor="@color/text_color_black"
+                        android:text="@string/global_stats_card_title"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ProgressBar
+                            android:id="@+id/global_stats_loading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/global_stats_error"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/unable_get_data_error"
+                            style="@style/text_view_content_error_style" />
+
+                        <LinearLayout
+                            android:id="@+id/global_stats_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout style="@style/global_stats_row">
+
+                                <TextView
+                                    android:text="@string/total_market_cap_caption"
+                                    style="@style/global_stats_row_caption" />
+
+                                <TextView
+                                    android:id="@+id/global_stats_total_cap"
+                                    tools:text="1234567891111"
+                                    style="@style/global_stats_row_value" />
+
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/global_stats_row">
+
+                                <TextView
+                                    android:text="@string/global_stats_total_24h_volume_caption"
+                                    style="@style/global_stats_row_caption" />
+
+                                <TextView
+                                    android:id="@+id/global_stats_total_24h_volume"
+                                    tools:text="1234567891111"
+                                    style="@style/global_stats_row_value" />
+
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/global_stats_row">
+
+                                <TextView
+                                    android:text="@string/global_data_bitcoin_percentage_caption"
+                                    style="@style/global_stats_row_caption" />
+
+                                <TextView
+                                    android:id="@+id/global_stats_bitcoin_percentage"
+                                    tools:text="1234567891111"
+                                    style="@style/global_stats_row_value" />
+
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/global_stats_row">
+
+                                <TextView
+                                    android:text="@string/global_stats_active_currencies_caption"
+                                    style="@style/global_stats_row_caption" />
+
+                                <TextView
+                                    android:id="@+id/global_stats_active_currencies"
+                                    tools:text="1234567891111"
+                                    style="@style/global_stats_row_value" />
+
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/global_stats_row">
+
+                                <TextView
+                                    android:text="@string/global_stats_active_assets_caption"
+                                    style="@style/global_stats_row_caption" />
+
+                                <TextView
+                                    android:id="@+id/global_stats_active_assets"
+                                    tools:text="1234567891111"
+                                    style="@style/global_stats_row_value" />
+
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/global_stats_row">
+
+                                <TextView
+                                    android:text="@string/global_stats_active_markets_caption"
+                                    style="@style/global_stats_row_caption" />
+
+                                <TextView
+                                    android:id="@+id/global_stats_active_markets"
+                                    tools:text="1234567891111"
+                                    style="@style/global_stats_row_value" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/global_stats_timestamp"
+                                android:layout_marginTop="@dimen/margin_small"
+                                tools:text="10.10.2017 12:12"
+                                style="@style/card_timestamp_style" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardCornerRadius="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_marginBottom="@dimen/margin_medium"
+                        android:layout_marginStart="@dimen/market_stats_tile_content_horizontal_margin"
+                        android:layout_marginEnd="@dimen/market_stats_tile_content_horizontal_margin"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textColor="@color/text_color_black"
+                        android:text="@string/market_capitalization_share_title"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_medium">
+
+                        <ProgressBar
+                            android:id="@+id/share_loading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/share_error"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/unable_get_data_error"
+                            style="@style/text_view_content_error_style" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/share_diagram"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/chart_height_in_card" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                app:cardElevation="@dimen/card_elevation"
+                app:cardCornerRadius="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/market_stats_tile_content_horizontal_margin"
+                        android:layout_marginEnd="@dimen/market_stats_tile_content_horizontal_margin"
+                        android:layout_marginBottom="@dimen/margin_medium"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textColor="@color/text_color_black"
+                        android:text="@string/market_cap_share_history_title"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chart_scale_controls_height"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="@dimen/market_stats_tile_content_horizontal_margin"
+                        android:layout_marginEnd="@dimen/market_stats_tile_content_horizontal_margin"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:id="@+id/history_share_24h"
+                            android:text="@string/_24h_caption"
+                            style="@style/tab_button_style" />
+
+                        <TextView
+                            android:id="@+id/history_share_month"
+                            android:text="@string/month_caption"
+                            style="@style/tab_button_style" />
+
+                        <TextView
+                            android:id="@+id/history_share_year"
+                            android:text="@string/year_caption"
+                            style="@style/tab_button_style" />
+
+                        <TextView
+                            android:id="@+id/history_share_all"
+                            android:text="@string/all_time_caption"
+                            style="@style/tab_button_style" />
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginEnd="@dimen/margin_medium">
+
+                        <ProgressBar
+                            android:id="@+id/history_share_loading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:id="@+id/history_share_error"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/unable_get_data_error"
+                            style="@style/text_view_content_error_style" />
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/share_history_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/chart_height_in_card" />
+
+                        <FrameLayout
+                            android:id="@+id/share_history_chart_touch_interceptor"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/chart_height_in_card" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
