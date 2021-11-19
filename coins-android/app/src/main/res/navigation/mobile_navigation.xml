@@ -3,16 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_crypto_coins">
+    app:startDestination="@+id/nav_coins">
 
     <action
         android:id="@+id/action_nav_crypto_coins_to_nav_crypto_coin_details"
         app:destination="@id/nav_crypto_coin_details" />
 
     <fragment
-        android:id="@+id/nav_crypto_coins"
+        android:id="@+id/nav_coins"
         android:name="com.oukachkosnt.coins.ui.coins.CryptoCoinsFragment"
         android:label="@string/drawer_coins" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.oukachkosnt.coins.ui.news.NewsListFragment"
+        android:label="@string/tofico_news_share_title" >
     </fragment>
 
     <activity

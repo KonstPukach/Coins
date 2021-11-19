@@ -34,7 +34,8 @@ class HomeActivity : AppCompatActivity(), FloatingActionButtonProvider, TabLayou
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_crypto_coins
+                R.id.nav_coins,
+                R.id.nav_news
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

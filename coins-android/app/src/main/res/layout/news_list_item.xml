@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/news_list_content_horizontal_margin"
+    android:layout_marginEnd="@dimen/news_list_content_horizontal_margin"
+    android:layout_marginTop="@dimen/margin_extra_small"
+    android:layout_marginBottom="@dimen/margin_extra_small"
+    app:cardElevation="@dimen/card_elevation"
+    app:cardCornerRadius="0dp"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/news_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/news_image_height"
+                android:scaleType="centerCrop"
+                tools:src="@mipmap/ic_launcher"
+                tools:ignore="ContentDescription" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:paddingTop="@dimen/margin_small"
+                android:paddingBottom="@dimen/margin_small"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="@dimen/margin_medium"
+                android:background="@color/news_title_background">
+
+                <TextView
+                    android:id="@+id/news_source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/news_posted_at"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/white_text_secondary"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:text="source.com"/>
+
+                <TextView
+                    android:id="@+id/news_posted_at"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/white_text_secondary"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:text="12.01 at 12:00 pm"/>
+
+                <TextView
+                    android:id="@+id/news_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/news_source"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/text_size_xlarge"
+                    android:textColor="@color/white_text_primary"
+                    tools:text="Very interesting news title go right here"/>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/news_views_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:padding="@dimen/margin_small"
+                android:src="@drawable/ic_eye_grey600_24dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/news_views_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/news_views_icon"
+                tools:text="12345"/>
+
+<!--            <ImageView-->
+<!--                android:id="@+id/news_share"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginEnd="@dimen/margin_small"-->
+<!--                android:padding="@dimen/margin_small"-->
+<!--                android:background="?selectableItemBackgroundBorderless"-->
+<!--                android:src="@drawable/ic_share_variant_grey600_24dp"-->
+<!--                tools:ignore="ContentDescription" />-->
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
