@@ -1,5 +1,8 @@
 package com.oukachkosnt.coins.formatters
 
+import java.math.RoundingMode
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -36,4 +39,14 @@ fun Date.formatLabel(scale: Long): String {
     }
 
     return formatter.format(this)
+}
+
+private val decimalNumberFormatter =
+    DecimalFormat("0.00", DecimalFormatSymbols.getInstance(Locale.US)).also {
+        it.roundingMode = RoundingMode.CEILING
+    }
+
+fun Double.formatDecimal(): String {
+    decimalNumberFormatter.maximumFractionDigits = 12
+    return decimalNumberFormatter.format(this)
 }

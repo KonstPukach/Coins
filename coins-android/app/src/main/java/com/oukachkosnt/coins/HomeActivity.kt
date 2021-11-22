@@ -42,7 +42,8 @@ class HomeActivity : AppCompatActivity(),
             setOf(
                 R.id.nav_coins,
                 R.id.nav_news,
-                R.id.nav_market_stats
+                R.id.nav_market_stats,
+                R.id.nav_converter
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

@@ -27,6 +27,12 @@
         android:label="@string/market_cap_share_history_title" >
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_converter"
+        android:name="com.oukachkosnt.coins.ui.converter.ConverterFragment"
+        android:label="@string/drawer_converter" >
+    </fragment>
+
     <activity
         android:id="@+id/nav_crypto_coin_details"
         android:name="com.oukachkosnt.coins.ui.coins.details.CoinDetailsPagesActivity"

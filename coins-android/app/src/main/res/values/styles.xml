@@ -64,4 +64,14 @@
         <item name="android:textSize">@dimen/text_size_xxlarge</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="currency_selector_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:drawableEnd">@drawable/ic_arrow_down_drop_circle_outline_grey600_18dp</item>
+    </style>
 </resources>

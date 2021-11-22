@@ -20,4 +20,6 @@ object ApiProvider {
     val marketStatsApi: MarketStatsApi by lazy { getRetrofit().create(MarketStatsApi::class.java) }
 
     val chartsApi: ChartsApi by lazy { getRetrofit().create(ChartsApi::class.java) }
+
+    val exchangeRateApi: ExchangeRateApi by lazy { getRetrofit().create(ExchangeRateApi::class.java) }
 }
