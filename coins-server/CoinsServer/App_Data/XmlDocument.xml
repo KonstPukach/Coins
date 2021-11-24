@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoinsServer</name>
+    </assembly>
+    <members>
+        <member name="F:CoinsServer.GlobalConfig.CoinMarketApiUri">
+            <summary>
+            CoinMarket Api Address
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.CoinMarketApiV2Uri">
+            <summary>
+            CoinMarket Api v2 Address
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.CoinMarketApiV2ListingEndpoin">
+            <summary>
+            CoinMarket v2 Listings endpoint
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.CoinMarketApiGlobalEndpoint">
+            <summary>
+            CoinMarket Global endpoint
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.EurMonetaryCurrenciesUri">
+            <summary>
+            Monetary Currencies Address
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.NewsUri">
+            <summary>
+            News api Address
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.CoinMarketApiGlobalDominanceHistory">
+            <summary>
+            CoinMarket Global dominance history endpoint
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.CoinMarketApiCoinCurrencyHistory">
+            <summary>
+            CoinMarket coin currency history endpoint
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.CoinMarketApiCoinsIcons">
+            <summary>
+            CoinMarket coin icon
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.RouteByChartTimeFilter">
+            <summary>
+            Route by ChartTimeFilter dictionary
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.AlertJobCronExpression">
+            <summary>
+            Alert job cron. Runs job every 5 minutes
+            </summary>
+        </member>
+        <member name="F:CoinsServer.GlobalConfig.UpdateCurrenciesJobCronExpression">
+            <summary>
+            Update monetary currencies job cron. Runs job every 1 hour
+            </summary>
+        </member>
+        <member name="T:CoinsServer.Models.MonetaryCurrencies">
+            <summary>
+            MonetaryCurrencies model
+            </summary>
+        </member>
+        <member name="P:CoinsServer.Models.MonetaryCurrencies.Success">
+            <summary>
+            Success
+            </summary>
+        </member>
+        <member name="P:CoinsServer.Models.MonetaryCurrencies.Base">
+            <summary>
+            Base
+            </summary>
+        </member>
+        <member name="P:CoinsServer.Models.MonetaryCurrencies.Date">
+            <summary>
+            Date
+            </summary>
+        </member>
+        <member name="P:CoinsServer.Models.MonetaryCurrencies.Rates">
+            <summary>
+            Rates
+            </summary>
+        </member>
+    </members>
+</doc>
