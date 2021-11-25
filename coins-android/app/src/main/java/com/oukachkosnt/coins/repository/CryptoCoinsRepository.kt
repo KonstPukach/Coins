@@ -1,63 +1,64 @@
 package com.oukachkosnt.coins.repository
 
+import com.oukachkosnt.coins.api.servies.CryptoCoinsApiService
 import com.oukachkosnt.coins.data.domain.CryptoCoinData
 import com.oukachkosnt.coins.data.domain.TopCoins
 import com.oukachkosnt.coins.utils.subscribeOnAsError
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Flowable
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.subjects.Subject
 import java.util.*
+import java.util.function.BiFunction
 import java.util.prefs.Preferences
 
 object CryptoCoinsRepository {
+    private val coinsApi = CryptoCoinsApiService()
+
+    private val allCoins      = BehaviorSubject.create<List<CryptoCoinData>>()
     private val isError       = BehaviorSubject.createDefault(false)
     private val isRefresh     = BehaviorSubject.createDefault(false)
-    private val allCoins      = BehaviorSubject.create<List<CryptoCoinData>>()
+    private val coinsFromApi = BehaviorSubject.create<List<CryptoCoinData>>()
     private val favoriteCoins = BehaviorSubject.create<List<CryptoCoinData>>()
     private val top10Coins    = BehaviorSubject.create<TopCoins>()
+    private var activeCoinsRequest: Disposable? = null
 
-    private val stub = CryptoCoinData(
-        id = "",
-        name = "Name",
-        iconUrl = "https://nemcd.com/wp-content/uploads/2011/07/bitcoin.png",
-        symbol = "$",
-        rank = 1,
-        isFavorite = true,
-        priceUsd = 123.32,
-        priceBtc = 1232.32,
-        volumeUsd24h = 123.32,
-        marketCapitalizationUsd = 123.232,
-        availableSupply = 123.32,
-        totalSupply = 1233.23,
-        percentChange1h = 13.12,
-        percentChange24h = 31.32,
-        percentChange7d = 123.21,
-        lastUpdated = Date()
-    )
+    init {
 
-    private val stubTop = TopCoins(
-        popular = listOf(stub, stub, stub, stub),
-        gainers = listOf(stub, stub, stub, stub),
-        losers  = listOf(stub, stub, stub, stub)
-    )
+        coinsFromApi.toFlowable(BackpressureStrategy.LATEST)
+        .observeOn(Schedulers.computation())
+            .also { it ->
+                fun <T> subscribe(subject: Subject<T>, mapper: (List<CryptoCoinData>) -> T) {
+                    it.map(mapper)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe({ subject.onNext(it) }, { isError.onNext(true) })
+                }
 
-    fun stub() {
-        allCoins.onNext(listOf(
-            stub, stub.copy(isFavorite = false), stub, stub.copy(isFavorite = false), stub
-        ))
+                subscribe(allCoins, { it })
+                subscribe(top10Coins, this::selectTop10)
+            }
     }
 
-    fun stubFavorite() {
-        favoriteCoins.onNext(listOf(
-            stub, stub
-        ))
-    }
+    fun subscribeOnAllCoins(consumer: (List<CryptoCoinData>) -> Unit, onError: () -> Unit): Disposable {
+        if (!coinsFromApi.hasValue()) {
+            loadAllCoins()
+        }
 
-    fun stubTop10Coins() {
-        top10Coins.onNext(stubTop)
+        return CompositeDisposable().also {
+            it.addAll(allCoins.subscribe(consumer), isError.subscribeOnAsError(onError))
+        }
     }
 
     fun getAllCoins(): Observable<List<CryptoCoinData>> {
+        if (!coinsFromApi.hasValue()) {
+            loadAllCoins()
+        }
+
         return allCoins
     }
 
@@ -78,6 +79,36 @@ object CryptoCoinsRepository {
         onFirstTimeUnfavorite: () -> Unit
     ) {
        // do smth
+    }
+
+    private fun loadAllCoins() {
+        fun onComplete(error: Boolean) {
+            activeCoinsRequest = null
+            isError.onNext(error)
+            isRefresh.onNext(false)
+        }
+
+        if (activeCoinsRequest == null) {
+            activeCoinsRequest = coinsApi.getAllCoins()
+                .subscribe(
+                    { it ->
+                        coinsFromApi.onNext(it)
+                        onComplete(false)
+                    },
+                    {
+                        onComplete(true)
+                    }
+                )
+        }
+    }
+
+    private fun selectTop10(coins: List<CryptoCoinData>): TopCoins {
+        val topPopular = coins.sortedByDescending { it.marketCapitalizationUsd }.take(10)
+
+        coins.sortedBy { it.percentChange24h }
+            .let {
+                return TopCoins(topPopular, it.takeLast(10).asReversed(), it.take(10))
+            }
     }
 
     fun subscribeOnCoinsError(onError: () -> Unit): Disposable = isError.subscribeOnAsError(onError)

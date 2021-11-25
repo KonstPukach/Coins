@@ -15,9 +15,4 @@ class FavoriteCryptoCoinsPresenter(
         addSubscription(CryptoCoinsRepository.subscribeOnCoinsError { view?.showError() })
         addSubscription(CryptoCoinsRepository.subscribeOnRefreshState { view?.setRefreshState(it) })
     }
-
-    override fun restoreState(state: Serializable?) {
-        super.restoreState(state)
-        CryptoCoinsRepository.stubFavorite()
-    }
 }

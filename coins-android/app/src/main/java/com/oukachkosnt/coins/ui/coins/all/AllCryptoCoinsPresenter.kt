@@ -13,9 +13,4 @@ class AllCryptoCoinsPresenter(view: AllCryptoCoinsView) : SimpleCoinsListPresent
             addSubscription(subscribeOnRefreshState { view?.setRefreshState(it) })
         }
     }
-
-    override fun restoreState(state: Serializable?) {
-        super.restoreState(state)
-        CryptoCoinsRepository.stub()
-    }
 }

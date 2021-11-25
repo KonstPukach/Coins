@@ -20,11 +20,6 @@ class TopCryptoCoinsPresenter(view: TopCryptoCoinsView,
        // CryptoCoinsRepository.refreshAllCoins()
     }
 
-    override fun restoreState(state: Serializable?) {
-        super.restoreState(state)
-        CryptoCoinsRepository.stubTop10Coins()
-    }
-
     fun switchCoinFavorite(coin: CryptoCoinData) {
         CryptoCoinsRepository.switchFavoriteStatus(
             coin,
