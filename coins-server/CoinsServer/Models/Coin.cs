@@ -73,18 +73,21 @@ namespace CoinsServer.Models
         public static Coin ParseJson(JToken token)
         {
             var usdQuote = token["quote"]["USD"];
-            var btcQuote = token["quote"]["BTC"];
-            var btcPrice = 56799.0M;
+
+            var priceUsd = ParseDecimal(usdQuote["price"].ToString());
+            var priceBtc = token["id"].ToString() == "1" ? priceUsd : GlobalCache.GetBtcRate();
             var coin = new Coin();
 
             coin.CoinId = token["id"].ToString();
             coin.Name = token["name"].ToString();
             coin.Symbol = token["symbol"].ToString();
+            coin.IconUrl = $"{GlobalConfig.CoinIconApiUrl}{coin.CoinId}.png";
             coin.PriceUsd = ParseDecimal(usdQuote["price"].ToString());
-            coin.PriceBtc = btcQuote == null ? ParseDecimal(usdQuote["price"].ToString()) / btcPrice : ParseDecimal(btcQuote["price"].ToString());
+            coin.PriceBtc = priceUsd / priceBtc;
             coin.VolumeUsd24H = ParseDecimal(usdQuote["volume_24h"].ToString());
             coin.MarketCapUsd = ParseDecimal(usdQuote["market_cap"].ToString());
             coin.TotalSupply = ParseDecimal(token["total_supply"].ToString());
+            coin.AvailableSupply = ParseDecimal(token["circulating_supply"].ToString());
             coin.MaxSupply = ParseDecimal(token["max_supply"].ToString());
             coin.PercentChange1H = ParseDouble(usdQuote["percent_change_1h"].ToString());
             coin.PercentChange24H = ParseDouble(usdQuote["percent_change_24h"].ToString());

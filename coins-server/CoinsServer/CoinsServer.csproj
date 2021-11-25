@@ -185,6 +185,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalCache.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\CapShare.cs" />
     <Compile Include="Models\ChartTimeFilter.cs" />
