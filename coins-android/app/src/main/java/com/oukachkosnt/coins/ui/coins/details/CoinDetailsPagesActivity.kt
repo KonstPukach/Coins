@@ -23,8 +23,8 @@ class CoinDetailsPagesActivity : MvpActivity<CoinDetailsPagesPresenter>(R.layout
 
     override fun createPresenter() = CoinDetailsPagesPresenter(this, getCoinData().id, null)
 
-    override fun bindView() {
-        binding = ActivityCoinDetailsBinding.inflate(layoutInflater)
+    override fun bindView(view: View) {
+        binding = ActivityCoinDetailsBinding.bind(view)
         setSupportActionBar(binding.toolbar)
 
         val pages = listOf(

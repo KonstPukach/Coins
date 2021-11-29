@@ -122,16 +122,20 @@ object GlobalMarketStatsRepository {
 
             val diagramData = api.getTopCoinsCapShare()
                 .also {
-                    it.subscribe({ cachedCapDiagramData.onNext(it) },
-                        { isCapDiagramError.onNext(true) })
+                    it.subscribe(
+                        { cachedCapDiagramData.onNext(it) },
+                        { isCapDiagramError.onNext(true) }
+                    )
                 }
 
             val interval = lastTimeInterval
             val chartData = chartsApi
                 .getMarketCapShareChartData(interval)
                 .also {
-                    it.subscribe({ cachedCapHistoryChartData.getValue(interval).onNext(it) },
-                        { isCapHistoryChartError.onNext(true) })
+                    it.subscribe(
+                        { cachedCapHistoryChartData.getValue(interval).onNext(it) },
+                        { isCapHistoryChartError.onNext(true) }
+                    )
                 }
 
             Single.zip<Any, Any, Any, Any>(

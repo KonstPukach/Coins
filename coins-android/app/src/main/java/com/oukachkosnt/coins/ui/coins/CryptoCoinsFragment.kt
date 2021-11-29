@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.oukachkosnt.coins.ui.coins.favorite.FavoriteCryptoCoinsFragment
 import com.oukachkosnt.coins.R
-import com.oukachkosnt.coins.TabLayoutProvider
 import com.oukachkosnt.coins.databinding.FragmentViewPagerBinding
 import com.oukachkosnt.coins.ui.coins.all.AllCryptoCoinsListFragment
 import com.oukachkosnt.coins.ui.coins.pager.Page
@@ -52,13 +51,7 @@ class CryptoCoinsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
-        (activity as? TabLayoutProvider)
-            ?.getTabLayout()
-            ?.let {
-                it.visibility = View.VISIBLE
-                it.setupWithViewPager(binding.viewPager)
-            }
+        binding.tabs.setupWithViewPager(binding.viewPager)
     }
 
     private fun updateMenuVisibility(pagerPosition: Int) {

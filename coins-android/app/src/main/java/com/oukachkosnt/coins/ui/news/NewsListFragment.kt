@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.oukachkosnt.coins.R
-import com.oukachkosnt.coins.TabLayoutProvider
 import com.oukachkosnt.coins.data.domain.NewsItemData
 import com.oukachkosnt.coins.mvp.list.ListMvpFragment
 import com.oukachkosnt.coins.recycler.*
@@ -23,7 +22,6 @@ class NewsListFragment : ListMvpFragment<List<NewsItemData>,
 
     override fun onResume() {
         super.onResume()
-        (activity as TabLayoutProvider).getTabLayout().isVisible = false
     }
 
     override fun createPresenter() = NewsListPresenter(this)

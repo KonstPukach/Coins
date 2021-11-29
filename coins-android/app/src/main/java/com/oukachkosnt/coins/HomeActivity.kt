@@ -19,7 +19,6 @@ import com.oukachkosnt.coins.databinding.ActivityMainBinding
 
 class HomeActivity : AppCompatActivity(),
     FloatingActionButtonProvider,
-    TabLayoutProvider,
     CollapsingToolbarOwner {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -66,8 +65,6 @@ class HomeActivity : AppCompatActivity(),
 
     override fun getActionButton(): FloatingActionButton = binding.appBarMain.fab
 
-    override fun getTabLayout(): TabLayout = binding.appBarMain.tabs
-
     override fun enableCollapsingToolbar(isEnabled: Boolean) {
         with (binding.appBarMain.toolbar.layoutParams as AppBarLayout.LayoutParams) {
             scrollFlags = if (isEnabled) SCROLL_FLAG_SCROLL or SCROLL_FLAG_ENTER_ALWAYS else 0
@@ -79,9 +76,6 @@ interface FloatingActionButtonProvider {
     fun getActionButton(): FloatingActionButton
 }
 
-interface TabLayoutProvider {
-    fun getTabLayout(): TabLayout
-}
 
 interface CollapsingToolbarOwner {
     fun enableCollapsingToolbar(isEnabled: Boolean)
