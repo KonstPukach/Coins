@@ -3,6 +3,7 @@ package com.oukachkosnt.coins.ui.coins.details
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.isVisible
+import androidx.navigation.findNavController
 import androidx.navigation.navArgs
 import androidx.viewpager.widget.ViewPager
 import com.oukachkosnt.coins.R
@@ -23,9 +24,12 @@ class CoinDetailsPagesActivity : MvpActivity<CoinDetailsPagesPresenter>(R.layout
 
     override fun createPresenter() = CoinDetailsPagesPresenter(this, getCoinData().id, null)
 
-    override fun bindView(view: View) {
-        binding = ActivityCoinDetailsBinding.bind(view)
+    override fun bindView() {
+        binding = ActivityCoinDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         val pages = listOf(
                 Page(getString(R.string.details_tab_title)) { CoinDetailsFragment() },

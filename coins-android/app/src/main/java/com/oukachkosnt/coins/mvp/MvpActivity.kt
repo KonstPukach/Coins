@@ -1,8 +1,6 @@
 package com.oukachkosnt.coins.mvp
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.LayoutRes
@@ -19,12 +17,10 @@ abstract class MvpActivity<T : MvpPresenter<out MvpView>>(@LayoutRes private val
         private set
 
     protected abstract fun createPresenter(): T
-    protected abstract fun bindView(view: View)
+    protected abstract fun bindView()
 
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
-
         bindView()
 
         presenter = createPresenter()
