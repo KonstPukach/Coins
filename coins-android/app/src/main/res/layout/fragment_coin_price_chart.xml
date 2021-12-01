@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_medium"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/chart_scale_controls_height"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <TextView
+                    android:id="@+id/interval_24h"
+                    style="@style/tab_button_style"
+                    android:text="@string/_24h_caption" />
+
+                <TextView
+                    android:id="@+id/interval_week"
+                    style="@style/tab_button_style"
+                    android:text="@string/week_caption" />
+
+                <TextView
+                    android:id="@+id/interval_month"
+                    style="@style/tab_button_style"
+                    android:text="@string/month_caption" />
+
+                <TextView
+                    android:id="@+id/interval_year"
+                    style="@style/tab_button_style"
+                    android:text="@string/year_caption" />
+
+                <TextView
+                    android:id="@+id/interval_all"
+                    style="@style/tab_button_style"
+                    android:text="@string/all_time_caption" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/coin_price_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:drawableEnd="@drawable/ic_arrow_down_drop_circle_outline_black_18dp"
+                android:drawablePadding="@dimen/margin_small"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_size_large"
+                android:background="?android:attr/selectableItemBackground"
+                tools:text="Bitcoin Cash" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/coin_price_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/coin_price_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unable_get_data_error"
+                    style="@style/text_view_content_error_style" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/coin_price_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <FrameLayout
+                    android:id="@+id/price_chart_touch_interceptor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -2,6 +2,7 @@ package com.oukachkosnt.coins.ui.coins.top
 
 import android.view.View
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.oukachkosnt.coins.FloatingActionButtonProvider
 import com.oukachkosnt.coins.R
@@ -11,8 +12,10 @@ import com.oukachkosnt.coins.recycler.ListAdapterViewHolder
 import com.oukachkosnt.coins.recycler.bind.Binder
 import com.oukachkosnt.coins.recycler.bind.BinderAdapter
 import com.oukachkosnt.coins.ui.coins.CoinViewHolder
+import com.oukachkosnt.coins.ui.coins.details.CoinDetailsPagesActivityDirections
 
-class TopCryptoCoinsFragment : ListMvpFragment<TopCoins, BinderAdapter<TopCoins>, TopCryptoCoinsPresenter>(),
+class TopCryptoCoinsFragment :
+    ListMvpFragment<TopCoins, BinderAdapter<TopCoins>, TopCryptoCoinsPresenter>(),
     TopCryptoCoinsView {
 
     override fun createPresenter() = TopCryptoCoinsPresenter(this, null)
@@ -26,8 +29,8 @@ class TopCryptoCoinsFragment : ListMvpFragment<TopCoins, BinderAdapter<TopCoins>
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         if (isVisibleToUser) {
             (activity as? FloatingActionButtonProvider)
-                    ?.getActionButton()
-                    ?.setOnClickListener { binding.recyclerView.smoothScrollToPosition(0) }
+                ?.getActionButton()
+                ?.setOnClickListener { binding.recyclerView.smoothScrollToPosition(0) }
         }
     }
 
@@ -41,22 +44,35 @@ class TopCryptoCoinsFragment : ListMvpFragment<TopCoins, BinderAdapter<TopCoins>
 
     private fun TopCoins.toBinders(): List<Binder<*, *>> {
         val binders = mutableListOf<Binder<*, *>>()
-        val coinsViewHolderSupplier = { v: View -> CoinViewHolder(v, { presenter?.switchCoinFavorite(it) }) }
+        val coinsViewHolderSupplier =
+            { v: View -> CoinViewHolder(v, { presenter?.switchCoinFavorite(it) }) }
         val titleViewHolderSupplier = { v: View -> SectionTitleViewHolder(v) }
 
-        listOf(getString(R.string.popular_section_title) to popular,
-               getString(R.string.gainers_section_title) to gainers,
-               getString(R.string.losers_secction_title) to losers)
+        listOf(
+            getString(R.string.popular_section_title) to popular,
+            getString(R.string.gainers_section_title) to gainers,
+            getString(R.string.losers_secction_title)  to losers
+        )
 
-                .forEach { (title, list) ->
-                    binders.add(Binder(R.layout.section_title_list_item, titleViewHolderSupplier, title))
-                    binders.addAll(list.map {
-                        Binder(R.layout.cryptocoin_list_item,
-                               coinsViewHolderSupplier,
-                               it,
-                               { /* TODO: navigate from here */ })
+            .forEach { (title, list) ->
+                binders.add(
+                    Binder(
+                        R.layout.section_title_list_item,
+                        titleViewHolderSupplier,
+                        title
+                    )
+                )
+                binders.addAll(list.map {
+                    Binder(R.layout.cryptocoin_list_item,
+                    coinsViewHolderSupplier,
+                    it,
+                    {
+                        findNavController().navigate(
+                            CoinDetailsPagesActivityDirections.actionNavCryptoCoinsToNavCryptoCoinDetails(it)
+                        )
                     })
-                }
+                })
+            }
 
         return binders
     }

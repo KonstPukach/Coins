@@ -1,9 +1,9 @@
 package com.oukachkosnt.coins.ui.coins.details
 
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
 import androidx.core.view.isVisible
-import androidx.navigation.findNavController
 import androidx.navigation.navArgs
 import androidx.viewpager.widget.ViewPager
 import com.oukachkosnt.coins.R
@@ -11,18 +11,24 @@ import com.oukachkosnt.coins.data.domain.CryptoCoinData
 import com.oukachkosnt.coins.databinding.ActivityCoinDetailsBinding
 import com.oukachkosnt.coins.mvp.MvpActivity
 import com.oukachkosnt.coins.mvp.MvpView
+import com.oukachkosnt.coins.ui.coins.details.chart.CoinPriceChartFragment
 import com.oukachkosnt.coins.ui.coins.details.coin.CoinDetailsFragment
 import com.oukachkosnt.coins.ui.coins.pager.Page
 import com.oukachkosnt.coins.ui.coins.pager.ViewPagerAdapter
 
-class CoinDetailsPagesActivity : MvpActivity<CoinDetailsPagesPresenter>(R.layout.activity_coin_details),
+class CoinDetailsPagesActivity :
+    MvpActivity<CoinDetailsPagesPresenter>(R.layout.activity_coin_details),
     CoinDetailsPagesView, CoinIdProvider {
 
     private var isFavoriteCoin = false
     private lateinit var binding: ActivityCoinDetailsBinding
     private val args: CoinDetailsPagesActivityArgs by navArgs()
 
-    override fun createPresenter() = CoinDetailsPagesPresenter(this, getCoinData().id, null)
+    override fun createPresenter() = CoinDetailsPagesPresenter(
+        this,
+        getCoinData().id,
+        null
+    )
 
     override fun bindView() {
         binding = ActivityCoinDetailsBinding.inflate(layoutInflater)
@@ -32,9 +38,8 @@ class CoinDetailsPagesActivity : MvpActivity<CoinDetailsPagesPresenter>(R.layout
         binding.toolbar.setNavigationOnClickListener { onBackPressed() }
 
         val pages = listOf(
-                Page(getString(R.string.details_tab_title)) { CoinDetailsFragment() },
-                Page(getString(R.string.details_tab_title)) { CoinDetailsFragment() },
-//                Page(getString(R.string.chart_tab_title)) { CoinPriceChartFragment() }
+            Page(getString(R.string.details_tab_title)) { CoinDetailsFragment() },
+            Page(getString(R.string.chart_tab_title)) { CoinPriceChartFragment() }
         )
 
         binding.viewPager.adapter = ViewPagerAdapter(pages, supportFragmentManager)
@@ -79,8 +84,10 @@ class CoinDetailsPagesActivity : MvpActivity<CoinDetailsPagesPresenter>(R.layout
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         menu.findItem(R.id.action_favorite)
-            .setIcon(if (isFavoriteCoin) R.drawable.ic_star_white_48dp
-                     else                R.drawable.ic_star_outline_white_48dp)
+            .setIcon(
+                if (isFavoriteCoin) R.drawable.ic_star_white_48dp
+                else R.drawable.ic_star_outline_white_48dp
+            )
 
         return true
     }
@@ -97,7 +104,8 @@ class CoinDetailsPagesActivity : MvpActivity<CoinDetailsPagesPresenter>(R.layout
     companion object {
         private const val COIN_DATA_KEY = "coinData"
 
-        fun makeArgs(coin: CryptoCoinData) = Bundle().also { it.putSerializable(COIN_DATA_KEY, coin) }
+        fun makeArgs(coin: CryptoCoinData) =
+            Bundle().also { it.putSerializable(COIN_DATA_KEY, coin) }
     }
 }
 

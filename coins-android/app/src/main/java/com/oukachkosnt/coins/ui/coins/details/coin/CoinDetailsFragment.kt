@@ -17,6 +17,8 @@ import com.oukachkosnt.coins.databinding.FragmentCoinDetailsBinding
 import com.oukachkosnt.coins.formatters.*
 import com.oukachkosnt.coins.mvp.MvpFragment
 import com.oukachkosnt.coins.mvp.MvpView
+import com.oukachkosnt.coins.repository.CryptoCoinsRepository
+import com.oukachkosnt.coins.repository.DbRepository
 import com.oukachkosnt.coins.utils.getColorForPriceChange
 import kotlin.math.abs
 

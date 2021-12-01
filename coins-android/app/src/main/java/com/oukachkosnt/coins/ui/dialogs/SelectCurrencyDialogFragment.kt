@@ -68,7 +68,7 @@ class SelectCurrencyDialogFragment : DialogFragment() {
             }
         }
 
-        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
+      //  dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
     }
 
     private fun onItemClicked(clickedCurrency: Currency) {

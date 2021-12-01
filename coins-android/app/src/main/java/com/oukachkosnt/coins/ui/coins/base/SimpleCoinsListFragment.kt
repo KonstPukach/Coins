@@ -16,7 +16,7 @@ abstract class SimpleCoinsListFragment<P: SimpleCoinsListPresenter<out SimpleCoi
 
     final override fun createAdapter() = CoinsAdapter(
         layoutSupplier    = { R.layout.cryptocoin_list_item },
-        holderSupplier    = { CoinViewHolder(it, { }) },
+        holderSupplier    = { CoinViewHolder(it, { presenter?.switchCoinFavorite(it) }) },
         itemClickListener = { _, data -> findNavController().navigate(CoinDetailsPagesActivityDirections.actionNavCryptoCoinsToNavCryptoCoinDetails(data)) }
     )
 
@@ -47,16 +47,16 @@ abstract class SimpleCoinsListFragment<P: SimpleCoinsListPresenter<out SimpleCoi
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         if (isVisibleToUser) {
             (activity as? FloatingActionButtonProvider)
-                    ?.getActionButton()
-                    ?.setOnClickListener {
-                        with(binding.recyclerView.layoutManager as LinearLayoutManager) {
-                            if (findFirstVisibleItemPosition() < SMOOTH_SCROLL_THRESHOLD) {
-                                binding.recyclerView.smoothScrollToPosition(0)
-                            } else {
-                                binding.recyclerView.scrollToPosition(0)
-                            }
+                ?.getActionButton()
+                ?.setOnClickListener {
+                    with(binding.recyclerView.layoutManager as LinearLayoutManager) {
+                        if (findFirstVisibleItemPosition() < SMOOTH_SCROLL_THRESHOLD) {
+                            binding.recyclerView.smoothScrollToPosition(0)
+                        } else {
+                            binding.recyclerView.scrollToPosition(0)
                         }
                     }
+                }
         }
     }
 

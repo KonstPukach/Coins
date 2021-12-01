@@ -16,30 +16,30 @@ class CoinDetailsPresenter(
 
     override fun init() {
         addSubscription(
-                CryptoCoinsRepository
+            CryptoCoinsRepository
                     .getCoinById(coin.id)
                     .subscribe({ view?.setData(it) }, { view?.showError() })
         )
 
-//        addSubscription(
-//                realTimePriceService
-//                    .getPriceDataObservable()
-//                    .debounce(100, TimeUnit.MILLISECONDS)
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe { it -> view?.setRealTimePrice(it) }
-//        )
-//
-//        addSubscription(
-//                realTimePriceService
-//                    .getConnectionStateObservable()
-//                    .subscribe { it -> view?.setRealTimePriceConnectionState(it) }
-//        )
-//
-//        addSubscription(
-//                realTimePriceService
-//                    .getErrorObservable()
-//                    .subscribe { view?.setRealTimePriceError() }
-//        )
+        addSubscription(
+                realTimePriceService
+                    .getPriceDataObservable()
+                    .debounce(100, TimeUnit.MILLISECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { it -> view?.setRealTimePrice(it) }
+        )
+
+        addSubscription(
+                realTimePriceService
+                    .getConnectionStateObservable()
+                    .subscribe { it -> view?.setRealTimePriceConnectionState(it) }
+        )
+
+        addSubscription(
+                realTimePriceService
+                    .getErrorObservable()
+                    .subscribe { view?.setRealTimePriceError() }
+        )
     }
 
     fun onViewShown() {

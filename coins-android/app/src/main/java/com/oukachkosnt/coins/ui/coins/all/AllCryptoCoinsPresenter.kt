@@ -2,9 +2,12 @@ package com.oukachkosnt.coins.ui.coins.all
 
 import com.oukachkosnt.coins.repository.CryptoCoinsRepository
 import com.oukachkosnt.coins.ui.coins.base.SimpleCoinsListPresenter
-import java.io.Serializable
 
-class AllCryptoCoinsPresenter(view: AllCryptoCoinsView) : SimpleCoinsListPresenter<AllCryptoCoinsView>(view) {
+class AllCryptoCoinsPresenter(
+    view: AllCryptoCoinsView
+) : SimpleCoinsListPresenter<AllCryptoCoinsView>(
+    view
+) {
 
     override fun init() {
         with(CryptoCoinsRepository) {

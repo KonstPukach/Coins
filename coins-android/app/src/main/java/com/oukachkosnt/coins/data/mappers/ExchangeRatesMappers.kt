@@ -8,7 +8,7 @@ fun ExchangeRatesApiData.toDomainData() =
     ExchangeRatesDataSet(currencies.toDomainData().filterByrAndBtc(), cryptocoins.toDomainData())
 
 private fun List<UsdBasedExchangeRateApiData>.toDomainData() =
-    map { ExchangeRate(Currency.USD, Currency(it.currency_id, it.name), normalizeRate(it.rate)) }
+    map { ExchangeRate(Currency.USD, Currency(it.currencyId, it.name), normalizeRate(it.rate)) }
 
 // FIXME: remove BYR and BTC on server side
 private fun List<ExchangeRate>.filterByrAndBtc(): List<ExchangeRate> {

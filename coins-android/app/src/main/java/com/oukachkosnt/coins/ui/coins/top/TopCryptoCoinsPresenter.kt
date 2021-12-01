@@ -17,7 +17,7 @@ class TopCryptoCoinsPresenter(view: TopCryptoCoinsView,
     }
 
     override fun refreshData() {
-       // CryptoCoinsRepository.refreshAllCoins()
+       CryptoCoinsRepository.refreshAllCoins()
     }
 
     fun switchCoinFavorite(coin: CryptoCoinData) {

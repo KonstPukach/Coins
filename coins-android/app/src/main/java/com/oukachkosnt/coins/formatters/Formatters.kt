@@ -31,6 +31,8 @@ fun Double.formatPrice(maxFractionDigits: Int? = null) = formatPriceUsd(maxFract
 
 fun Double.formatPriceUsdAutoprecision() = formatPriceUsd(if (this > 1) 2 else 12)
 
+fun Double.formatPriceAutoprecision() = formatPriceUsd(if (this > 1) 2 else 12).substring(1)
+
 fun Date.formatLabel(scale: Long): String {
     val formatter = when {
         scale < TimeUnit.DAYS.toMillis(1)  -> SimpleDateFormat("HH:mm", Locale.US)

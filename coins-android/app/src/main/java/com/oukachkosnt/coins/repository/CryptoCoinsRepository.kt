@@ -1,5 +1,9 @@
 package com.oukachkosnt.coins.repository
 
+import android.annotation.SuppressLint
+import com.oukachkosnt.coins.api.db.CryptoCoinEntity
+import com.oukachkosnt.coins.api.db.FavsDatabase
+import com.oukachkosnt.coins.api.db.mapToEntity
 import com.oukachkosnt.coins.api.servies.CryptoCoinsApiService
 import com.oukachkosnt.coins.data.domain.CryptoCoinData
 import com.oukachkosnt.coins.data.domain.TopCoins
@@ -13,8 +17,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.Subject
-import java.util.*
-import java.util.function.BiFunction
 import java.util.prefs.Preferences
 
 object CryptoCoinsRepository {
@@ -42,6 +44,33 @@ object CryptoCoinsRepository {
                 subscribe(allCoins, { it })
                 subscribe(top10Coins, this::selectTop10)
             }
+
+//        val favsFlowable = favsDb.favsDao().getFavs().toFlowable()
+//
+//        Flowable.combineLatest(
+//            coinsFromApi.toFlowable(BackpressureStrategy.LATEST),
+//            favsFlowable.map { it.map { it.id } },
+//            { x: List<CryptoCoinData>, y: List<String> -> y to x }
+//        ).observeOn(Schedulers.computation())
+//            .map { (favorites, coins) ->
+//                val favoritesSet = favorites.toSet()
+//                coins.map {
+//                    if (it.id in favoritesSet) it.copy(isFavorite = true)
+//                    else                       it
+//                }
+//            }
+//            .also { it ->
+//                fun <T> subscribe(subject: Subject<T>, mapper: (List<CryptoCoinData>) -> T) {
+//                    it.map(mapper)
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(
+//                            { subject.onNext(it) },
+//                            { isError.onNext(true) }
+//                        )
+//                }
+//                subscribe(allCoins) { it }
+//                subscribe(top10Coins, this::selectTop10)
+//            }
     }
 
     fun subscribeOnAllCoins(consumer: (List<CryptoCoinData>) -> Unit, onError: () -> Unit): Disposable {
@@ -70,15 +99,26 @@ object CryptoCoinsRepository {
         return top10Coins
     }
 
+    fun refreshAllCoins() {
+        isRefresh.onNext(true)
+        loadAllCoins()
+    }
+
     fun getCoinById(id: String): Observable<CryptoCoinData> = allCoins.map { it.find { it.id == id }!! }
 
+    @SuppressLint("CheckResult")
     fun switchFavoriteStatus(
         coin: CryptoCoinData,
         prefs: Preferences? = null, // TODO
         onFirstTimeFavorite: () -> Unit,
         onFirstTimeUnfavorite: () -> Unit
     ) {
-       // do smth
+//        if (coin.isFavorite) {
+//            favsDb.favsDao().deleteFav(coin.mapToEntity()).doOnComplete(onFirstTimeUnfavorite)
+//        } else {
+//            favsDb.favsDao().insertFav(coin.mapToEntity()).doOnComplete(onFirstTimeFavorite)
+//        }
+
     }
 
     private fun loadAllCoins() {

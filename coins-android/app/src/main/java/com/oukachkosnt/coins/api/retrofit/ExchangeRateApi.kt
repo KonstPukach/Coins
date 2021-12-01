@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface ExchangeRateApi {
 
-    @GET("exchange-rates")
+    @GET("exchange-rates/100")
     fun getUsdBasedExchangeRates(): Single<ExchangeRatesApiData>
 }
