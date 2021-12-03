@@ -8,11 +8,11 @@ abstract class SimpleCoinsListPresenter<V: SimpleCoinsListView>(view: V)
     : ListMvpPresenter<V>(view) {
 
     override fun refreshData() {
-       CryptoCoinsRepository.refreshAllCoins()
+       CryptoCoinsRepository.getInstance().refreshAllCoins()
     }
 
     fun switchCoinFavorite(coin: CryptoCoinData) {
-        CryptoCoinsRepository.switchFavoriteStatus(
+        CryptoCoinsRepository.getInstance().switchFavoriteStatus(
             coin = coin,
             prefs = null,
             onFirstTimeFavorite = { view?.showFirstFavoriteHelpMessage() },

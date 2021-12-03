@@ -17,6 +17,7 @@ class CoinDetailsPresenter(
     override fun init() {
         addSubscription(
             CryptoCoinsRepository
+                    .getInstance()
                     .getCoinById(coin.id)
                     .subscribe(
                         { view?.setData(it) },

@@ -11,17 +11,17 @@ class TopCryptoCoinsPresenter(view: TopCryptoCoinsView,
 ) : ListMvpPresenter<TopCryptoCoinsView>(view) {
 
     override fun init() {
-        addSubscription(CryptoCoinsRepository.getTop10Coins().subscribe { view?.setData(it) })
-        addSubscription(CryptoCoinsRepository.subscribeOnCoinsError { view?.showError() })
-        addSubscription(CryptoCoinsRepository.subscribeOnRefreshState { view?.setRefreshState(it) })
+        addSubscription(CryptoCoinsRepository.getInstance().getTop10Coins().subscribe { view?.setData(it) })
+        addSubscription(CryptoCoinsRepository.getInstance().subscribeOnCoinsError { view?.showError() })
+        addSubscription(CryptoCoinsRepository.getInstance().subscribeOnRefreshState { view?.setRefreshState(it) })
     }
 
     override fun refreshData() {
-       CryptoCoinsRepository.refreshAllCoins()
+       CryptoCoinsRepository.getInstance().refreshAllCoins()
     }
 
     fun switchCoinFavorite(coin: CryptoCoinData) {
-        CryptoCoinsRepository.switchFavoriteStatus(
+        CryptoCoinsRepository.getInstance().switchFavoriteStatus(
             coin,
             prefs,
             { view?.showFirstFavoriteHelpMessage() },

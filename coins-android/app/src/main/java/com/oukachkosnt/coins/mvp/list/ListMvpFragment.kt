@@ -83,6 +83,6 @@ abstract class ListMvpFragment<in Data, Adapter, Presenter: ListMvpPresenter<out
     }
 
     private fun enableSwipeRefreshIfLoadFinished() {
-        binding.swipeRefresh.isEnabled = useSwipeRefresh && binding.loadingView.visibility == View.INVISIBLE
+        binding.swipeRefresh.isEnabled = useSwipeRefresh && !binding.loadingView.isVisible
     }
 }

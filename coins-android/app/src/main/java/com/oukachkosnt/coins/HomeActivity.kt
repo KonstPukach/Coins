@@ -1,20 +1,19 @@
 package com.oukachkosnt.coins
 
 import android.os.Bundle
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS
 import com.google.android.material.appbar.AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.tabs.TabLayout
+import com.google.android.material.navigation.NavigationView
 import com.oukachkosnt.coins.databinding.ActivityMainBinding
 
 class HomeActivity : AppCompatActivity(),
@@ -75,7 +74,6 @@ class HomeActivity : AppCompatActivity(),
 interface FloatingActionButtonProvider {
     fun getActionButton(): FloatingActionButton
 }
-
 
 interface CollapsingToolbarOwner {
     fun enableCollapsingToolbar(isEnabled: Boolean)
