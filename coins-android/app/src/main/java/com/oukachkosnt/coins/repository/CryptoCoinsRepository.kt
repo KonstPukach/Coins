@@ -1,6 +1,7 @@
 package com.oukachkosnt.coins.repository
 
 import android.annotation.SuppressLint
+import android.content.Context
 import com.oukachkosnt.coins.api.db.CryptoCoinEntity
 import com.oukachkosnt.coins.api.db.FavsDatabase
 import com.oukachkosnt.coins.api.db.mapToEntity
@@ -30,48 +31,42 @@ object CryptoCoinsRepository {
     private val top10Coins    = BehaviorSubject.create<TopCoins>()
     private var activeCoinsRequest: Disposable? = null
 
-    init {
+    private lateinit var favsDb: FavsDatabase
 
-        coinsFromApi.toFlowable(BackpressureStrategy.LATEST)
-        .observeOn(Schedulers.computation())
+    fun init(applicationContext: Context): CryptoCoinsRepository {
+
+        favsDb = DbRepository.getFavsDb(applicationContext)
+
+        val favsFlowable = favsDb.favsDao().getFavs().toFlowable()
+
+        Flowable.combineLatest(
+            coinsFromApi.toFlowable(BackpressureStrategy.LATEST),
+            favsFlowable.map { it.map { it.id } },
+            { x: List<CryptoCoinData>, y: List<String> -> y to x }
+        ).observeOn(Schedulers.computation())
+            .map { (favorites, coins) ->
+                val favoritesSet = favorites.toSet()
+                coins.map {
+                    if (it.id in favoritesSet) it.copy(isFavorite = true)
+                    else                       it
+                }
+            }
             .also { it ->
                 fun <T> subscribe(subject: Subject<T>, mapper: (List<CryptoCoinData>) -> T) {
                     it.map(mapper)
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ subject.onNext(it) }, { isError.onNext(true) })
+                        .subscribe(
+                            { subject.onNext(it) },
+                            { isError.onNext(true) }
+                        )
                 }
-
-                subscribe(allCoins, { it })
+                subscribe(allCoins) { it }
                 subscribe(top10Coins, this::selectTop10)
             }
-
-//        val favsFlowable = favsDb.favsDao().getFavs().toFlowable()
-//
-//        Flowable.combineLatest(
-//            coinsFromApi.toFlowable(BackpressureStrategy.LATEST),
-//            favsFlowable.map { it.map { it.id } },
-//            { x: List<CryptoCoinData>, y: List<String> -> y to x }
-//        ).observeOn(Schedulers.computation())
-//            .map { (favorites, coins) ->
-//                val favoritesSet = favorites.toSet()
-//                coins.map {
-//                    if (it.id in favoritesSet) it.copy(isFavorite = true)
-//                    else                       it
-//                }
-//            }
-//            .also { it ->
-//                fun <T> subscribe(subject: Subject<T>, mapper: (List<CryptoCoinData>) -> T) {
-//                    it.map(mapper)
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribe(
-//                            { subject.onNext(it) },
-//                            { isError.onNext(true) }
-//                        )
-//                }
-//                subscribe(allCoins) { it }
-//                subscribe(top10Coins, this::selectTop10)
-//            }
+        return this
     }
+
+
 
     fun subscribeOnAllCoins(consumer: (List<CryptoCoinData>) -> Unit, onError: () -> Unit): Disposable {
         if (!coinsFromApi.hasValue()) {
@@ -113,11 +108,11 @@ object CryptoCoinsRepository {
         onFirstTimeFavorite: () -> Unit,
         onFirstTimeUnfavorite: () -> Unit
     ) {
-//        if (coin.isFavorite) {
-//            favsDb.favsDao().deleteFav(coin.mapToEntity()).doOnComplete(onFirstTimeUnfavorite)
-//        } else {
-//            favsDb.favsDao().insertFav(coin.mapToEntity()).doOnComplete(onFirstTimeFavorite)
-//        }
+        if (coin.isFavorite) {
+            favsDb.favsDao().deleteFav(coin.mapToEntity()).doOnComplete(onFirstTimeUnfavorite).subscribe()
+        } else {
+            favsDb.favsDao().insertFav(coin.mapToEntity()).doOnComplete(onFirstTimeFavorite).subscribe()
+        }
 
     }
 

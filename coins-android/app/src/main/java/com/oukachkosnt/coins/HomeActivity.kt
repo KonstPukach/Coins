@@ -15,7 +15,9 @@ import com.google.android.material.appbar.AppBarLayout.LayoutParams.SCROLL_FLAG_
 import com.google.android.material.appbar.AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
+import com.oukachkosnt.coins.api.db.CryptoCoinEntity
 import com.oukachkosnt.coins.databinding.ActivityMainBinding
+import com.oukachkosnt.coins.repository.DbRepository
 
 class HomeActivity : AppCompatActivity(),
     FloatingActionButtonProvider,
