@@ -6,7 +6,7 @@ class ExchangeRatesApiData(
 )
 
 class UsdBasedExchangeRateApiData(
-    val currencyId: String,
+    val currency_id: String,
     val name: String,
     val rate: Double
 )

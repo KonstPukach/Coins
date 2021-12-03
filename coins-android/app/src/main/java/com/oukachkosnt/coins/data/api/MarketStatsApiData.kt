@@ -1,13 +1,13 @@
 package com.oukachkosnt.coins.data.api
 
 class MarketStatsApiData(
-    val totalMarketCapUsd: Double,
-    val total24hVolumeUsd: Double,
-    val bitcoinPercentageOfMarketCap: Double,
-    val activeCurrencies: Int,
-    val activeAssets: Int,
-    val activeMarkets: Int,
-    val lastUpdated: Long
+    val total_market_cap_usd: Double,
+    val total_24h_volume_usd: Double,
+    val bitcoin_percentage_of_market_cap: Double,
+    val active_currencies: Int,
+    val active_assets: Int,
+    val active_markets: Int,
+    val last_updated: Long
 )
 
 class CapShareApiData(

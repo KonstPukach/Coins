@@ -23,18 +23,5 @@
             android:id="@+id/nav_converter"
             android:icon="@drawable/ic_baseline_swap_horiz_24"
             android:title="@string/drawer_converter" />
-        <item
-            android:id="@+id/nav_alerts"
-            android:icon="@drawable/ic_baseline_notifications_24"
-            android:title="@string/drawer_alerts" />
     </group>
-
-    <item android:title="@string/drawer_section_communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_baseline_share_24"
-                android:title="@string/drawer_share_app" />
-        </menu>
-    </item>
 </menu>

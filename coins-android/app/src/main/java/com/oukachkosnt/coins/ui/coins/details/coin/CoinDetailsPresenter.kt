@@ -18,27 +18,34 @@ class CoinDetailsPresenter(
         addSubscription(
             CryptoCoinsRepository
                     .getCoinById(coin.id)
-                    .subscribe({ view?.setData(it) }, { view?.showError() })
+                    .subscribe(
+                        { view?.setData(it) },
+                        { view?.showError() }
+                    )
         )
 
         addSubscription(
                 realTimePriceService
                     .getPriceDataObservable()
-                    .debounce(100, TimeUnit.MILLISECONDS)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { it -> view?.setRealTimePrice(it) }
+                    .subscribe {
+                        view?.setRealTimePrice(it)
+                    }
         )
 
         addSubscription(
                 realTimePriceService
                     .getConnectionStateObservable()
-                    .subscribe { it -> view?.setRealTimePriceConnectionState(it) }
+                    .subscribe {
+                        //view?.setRealTimePriceConnectionState(it)
+                    }
         )
 
         addSubscription(
                 realTimePriceService
                     .getErrorObservable()
-                    .subscribe { view?.setRealTimePriceError() }
+                    .subscribe {
+                        //view?.setRealTimePriceError()
+                    }
         )
     }
 

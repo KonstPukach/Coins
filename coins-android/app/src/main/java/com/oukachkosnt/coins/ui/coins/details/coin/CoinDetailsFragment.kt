@@ -20,6 +20,7 @@ import com.oukachkosnt.coins.mvp.MvpView
 import com.oukachkosnt.coins.repository.CryptoCoinsRepository
 import com.oukachkosnt.coins.repository.DbRepository
 import com.oukachkosnt.coins.utils.getColorForPriceChange
+import kotlinx.coroutines.channels.TickerMode
 import kotlin.math.abs
 
 class  CoinDetailsFragment : MvpFragment<CoinDetailsPresenter>(R.layout.fragment_coin_details),
