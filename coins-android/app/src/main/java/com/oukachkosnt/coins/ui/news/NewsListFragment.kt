@@ -20,10 +20,6 @@ class NewsListFragment : ListMvpFragment<List<NewsItemData>,
         NewsListPresenter>(),
         NewsListView {
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     override fun createPresenter() = NewsListPresenter(this)
 
     override fun createAdapter() = EndlessListAdapter(
@@ -71,17 +67,15 @@ class NewsListFragment : ListMvpFragment<List<NewsItemData>,
         private val sourceView: TextView     = rootView.findViewById(R.id.news_source)
         private val postedAtView: TextView   = rootView.findViewById(R.id.news_posted_at)
         private val imageView: ImageView     = rootView.findViewById(R.id.news_image)
-        private val viewsCountView: TextView = rootView.findViewById(R.id.news_views_count)
 
         override fun bind(data: NewsItemData) {
             titleView.text      = data.title
             sourceView.text     = data.source
             postedAtView.text   = data.postedAt
-            viewsCountView.text = data.viewsCount.toString()
 
             Glide.with(imageView)
                 .load(data.imageUrl)
-                .apply(RequestOptions().placeholder(R.drawable.image_placeholder).error(R.drawable.error_placeholder))
+                .apply(RequestOptions().placeholder(R.drawable.image_placeholder).error(R.drawable.error_placeholder).centerCrop())
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(imageView)
 

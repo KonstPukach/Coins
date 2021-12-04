@@ -10,14 +10,14 @@ import io.reactivex.schedulers.Schedulers
 class NewsApiService {
 
     fun getNewsPage(page: Int): Single<List<NewsItemData>> {
-        if (page < 0) throw IllegalArgumentException("Should be non-negative")
+        if (page < 1) throw IllegalArgumentException("Should be non-negative")
 
         return ApiProvider
             .newsApi
             .getNews(page)
             .subscribeOn(Schedulers.io())
             .map {
-                it.news.map { data ->
+                it.articles.map { data ->
                     data.toDomainData()
                 }
             }

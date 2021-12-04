@@ -7,6 +7,6 @@ import retrofit2.http.Path
 
 interface NewsApi {
     
-    @GET("news/{page}")
+    @GET("news/en/{page}")
     fun getNews(@Path("page") page: Int): Single<NewsApiResponse>
 }

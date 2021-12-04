@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/nav_news"
         android:name="com.oukachkosnt.coins.ui.news.NewsListFragment"
-        android:label="@string/tofico_news_share_title" >
+        android:label="@string/coins_news_share_title" >
     </fragment>
 
     <fragment
