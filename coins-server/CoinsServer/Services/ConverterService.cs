@@ -39,6 +39,15 @@ namespace CoinsServer.Services
             };
         }
 
+        public async Task UpdateCurrencies()
+        {
+            using (var db = new CoinsContext())
+            {
+                await db.Database.ExecuteSqlCommandAsync(@"TRUNCATE TABLE dbo.Currencies");
+                await GetMonetaryCurrencies();
+            }
+        }
+
         public async Task<IList<Currency>> GetMonetaryCurrencies()
         {
             using (var db = new CoinsContext())
