@@ -191,6 +191,15 @@
     </Compile>
     <Compile Include="GlobalCache.cs" />
     <Compile Include="GlobalConfig.cs" />
+    <Compile Include="Migrations\202112041317474_InitialCreate.cs" />
+    <Compile Include="Migrations\202112041317474_InitialCreate.Designer.cs">
+      <DependentUpon>202112041317474_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112042145188_AlertStructureUpdate.cs" />
+    <Compile Include="Migrations\202112042145188_AlertStructureUpdate.Designer.cs">
+      <DependentUpon>202112042145188_AlertStructureUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\CapShare.cs" />
     <Compile Include="Models\ChartTimeFilter.cs" />
@@ -230,6 +239,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202112041317474_InitialCreate.resx">
+      <DependentUpon>202112041317474_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112042145188_AlertStructureUpdate.resx">
+      <DependentUpon>202112042145188_AlertStructureUpdate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

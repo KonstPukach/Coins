@@ -23,11 +23,19 @@ namespace CoinsServer.Models
         public string CoinId { get; set; }
 
         [Required]
+        [DataMember(Name = "name")]
+        public string Name { get; set; }
+
+        [Required]
         [DataMember(Name = "low_limit")]
         public decimal LowLimit { get; set; }
 
         [Required]
         [DataMember(Name = "high_limit")]
         public decimal HighLimit { get; set; }
+
+        [Required]
+        [DataMember(Name = "created_at")]
+        public DateTime CreatedAt { get; set; }
     }
 }

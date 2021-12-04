@@ -21,6 +21,12 @@ namespace CoinsServer.Controllers
             return db.Alerts;
         }
 
+        [Route("user/{token}")]
+        public IEnumerable<Alert> GetAlerts(string token)
+        {
+            return db.Alerts.Where(alert => alert.Token == token);
+        }
+
         [Route("{id:int}")]
         [ResponseType(typeof(Alert))]
         public async Task<IHttpActionResult> GetAlert(int id)
