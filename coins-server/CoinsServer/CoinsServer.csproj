@@ -182,6 +182,7 @@
     <Compile Include="Controllers\CoinsController.cs" />
     <Compile Include="Controllers\MarketStatsController.cs" />
     <Compile Include="Controllers\AppCoinsApiController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,6 +201,7 @@
     <Compile Include="Services\ConverterService.cs" />
     <Compile Include="Services\MainService.cs" />
     <Compile Include="Services\MarketService.cs" />
+    <Compile Include="Services\NewsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
