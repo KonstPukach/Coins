@@ -53,7 +53,6 @@ class TopCryptoCoinsFragment :
             getString(R.string.gainers_section_title) to gainers,
             getString(R.string.losers_secction_title)  to losers
         )
-
             .forEach { (title, list) ->
                 binders.add(
                     Binder(

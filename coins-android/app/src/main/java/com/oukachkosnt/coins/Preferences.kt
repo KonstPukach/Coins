@@ -20,6 +20,8 @@ class Preferences(context: Context) {
         default = TimeInterval.MONTH
     )
 
+    var firebaseToken by PrefProperty(FIREBASE_TOKEN_KEY, { it }, null)
+
     private inner class PrefProperty<T>(
         private val key: String,
         private val mapper: (String) -> T,
@@ -42,5 +44,6 @@ class Preferences(context: Context) {
     companion object {
         private const val COIN_PRICE_CHART_INTERVAL = "coinPriceIntervalKey"
         private const val MARKET_CAP_SHARE_CHART_INTERVAL = "capShareIntervalKey"
+        private const val FIREBASE_TOKEN_KEY = "firebaseTokenKey"
     }
 }

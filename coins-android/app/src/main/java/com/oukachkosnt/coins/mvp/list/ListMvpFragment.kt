@@ -40,13 +40,16 @@ abstract class ListMvpFragment<in Data, Adapter, Presenter: ListMvpPresenter<out
             adapter = listAdapter
         }
 
-        binding.swipeRefresh.setOnRefreshListener { presenter?.refreshData() }
+        binding.swipeRefresh.setOnRefreshListener {
+            presenter?.refreshData()
+        }
 
         setListViewState(ViewState.SHOW_LOADING)
     }
 
     override fun setData(newData: Data) {
         listAdapter.setDataList(newData)
+        binding.recyclerView.adapter?.notifyDataSetChanged()
         setListViewState(ViewState.SHOW_CONTENT)
 
         onNewDataSet(newData)
