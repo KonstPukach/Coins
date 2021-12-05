@@ -17,7 +17,7 @@ namespace CoinsServer.Services
         {
             using (var db = new CoinsContext())
             {
-                var alerts = await db.Alerts.ToListAsync();
+                var alerts = await db.Alerts.Include(a => a.User).ToListAsync();
                 if (!alerts.Any())
                 {
                     return;
@@ -45,13 +45,19 @@ namespace CoinsServer.Services
                     db.Alerts.Remove(alert);
                 }
             }
-            await db.SaveChangesAsync();
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch(Exception)
+            {
+            }
         }
 
         private async Task<Dictionary<string, Coin>> GetCoins()
         {
             var coins = await new CoinsService().GetCoins();
-            return coins?.ToDictionary(coin => coin.CoinId);
+            return coins?.ToDictionary(coin => coin.Id);
         }
 
         private bool IsAlertShouldBePushed(Alert alert, decimal? currentUsdPrice)
@@ -103,7 +109,7 @@ namespace CoinsServer.Services
         {
             return new
             {
-                to = alert.Token,
+                to = alert.User.Token,
                 data = new
                 {
                     notification_body = $"Current {coin.Name} price is {coin.PriceUsd}$",

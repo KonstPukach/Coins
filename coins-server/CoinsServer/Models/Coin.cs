@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -11,8 +12,9 @@ namespace CoinsServer.Models
     public class Coin
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [DataMember(Name = "id")]
-        public string CoinId { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [DataMember(Name = "name")]
@@ -65,6 +67,8 @@ namespace CoinsServer.Models
         [DataMember(Name = "last_updated")]
         public int? LastUpdated { get; set; }
 
+        public ICollection<Alert> Alerts { get; set; }
+
         public static IList<Coin> Parse(string jsonCoin)
         {
             return JsonConvert.DeserializeObject<IList<Coin>>(jsonCoin);
@@ -78,10 +82,10 @@ namespace CoinsServer.Models
             var priceBtc = token["id"].ToString() == "1" ? priceUsd : GlobalCache.GetBtcRate();
             var coin = new Coin();
 
-            coin.CoinId = token["id"].ToString();
+            coin.Id = token["id"].ToString();
             coin.Name = token["name"].ToString();
             coin.Symbol = token["symbol"].ToString();
-            coin.IconUrl = $"{GlobalConfig.CoinIconApiUrl}{coin.CoinId}.png";
+            coin.IconUrl = $"{GlobalConfig.CoinIconApiUrl}{coin.Id}.png";
             coin.PriceUsd = ParseDecimal(usdQuote["price"].ToString());
             coin.PriceBtc = priceUsd / priceBtc;
             coin.VolumeUsd24H = ParseDecimal(usdQuote["volume_24h"].ToString());

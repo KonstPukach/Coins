@@ -10,6 +10,8 @@ namespace CoinsServer.Services
 {
     public class CoinsService : MainService
     {
+        private static CoinsContext db = new CoinsContext();
+
         public async Task<IList<Coin>> GetCoins(int start = 1, int limit = 200)
         {
             var response = await GetCoinsMarketApiResponse($"{GlobalConfig.CoinMarketApiListingsEndpoint}?start={start}&limit={limit}");
@@ -26,6 +28,8 @@ namespace CoinsServer.Services
                 var coin = Coin.ParseJson(coinData);
                 coins.Add(coin);
             }
+            foreach (var coin in coins)
+                AddOrUpdateCoin(coin);
             return coins;
         }
 
@@ -41,8 +45,41 @@ namespace CoinsServer.Services
             var responseObject = JObject.Parse(responseString);
             var coinData = responseObject["data"][id];
             var coin = Coin.ParseJson(coinData);
-
+            await AddOrUpdateCoin(coin);
             return coin;
+        }
+
+        private async Task AddOrUpdateCoin(Coin coin)
+        {
+            try
+            {
+                var dbCoin = new CoinsContext().Coins.FirstOrDefault(c => c.Id == coin.Id);
+                if (dbCoin == null)
+                {
+                    db.Coins.Add(coin);
+                    await db.SaveChangesAsync();
+                    return;
+                }
+                dbCoin.AvailableSupply = coin.AvailableSupply;
+                dbCoin.IconUrl = coin.IconUrl;
+                dbCoin.LastUpdated = coin.LastUpdated;
+                dbCoin.MarketCapUsd = coin.MarketCapUsd;
+                dbCoin.MaxSupply = coin.MaxSupply;
+                dbCoin.Name = coin.Name;
+                dbCoin.PercentChange1H = coin.PercentChange1H;
+                dbCoin.PercentChange24H = coin.PercentChange24H;
+                dbCoin.PercentChange7D = coin.PercentChange7D;
+                dbCoin.PriceBtc = coin.PriceBtc;
+                dbCoin.PriceUsd = coin.PriceUsd;
+                dbCoin.Rank = coin.Rank;
+                dbCoin.Symbol = coin.Symbol;
+                dbCoin.TotalSupply = coin.TotalSupply;
+                dbCoin.VolumeUsd24H = coin.VolumeUsd24H;
+                await db.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         public async Task<string> GetCurrencyHistory(string coinId, string period)
