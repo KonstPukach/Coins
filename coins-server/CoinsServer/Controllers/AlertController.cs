@@ -21,7 +21,7 @@ namespace CoinsServer.Controllers
             return db.Alerts;
         }
 
-        [Route("user/{token}")]
+        [Route("user")]
         public IEnumerable<Alert> GetAlerts(string token)
         {
             return db.Alerts.Where(alert => alert.Token == token);
