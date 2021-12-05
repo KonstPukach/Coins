@@ -60,13 +60,13 @@ namespace CoinsServer.Services
         {
             var historyJson = JObject.Parse(jsonString);
             var valuesJson = historyJson["data"]["points"];
-            var values = valuesJson.ToObject<Dictionary<int, Dictionary<string, List<decimal>>>>();
-            var pricesArray = new List<List<decimal>>();
+            var values = valuesJson.ToObject<Dictionary<long, Dictionary<string, List<decimal>>>>();
+            var pricesArray = new List<List<string>>();
             var keys = values.Keys.ToList();
             keys.Sort();
             foreach (var key in keys)
             {
-                pricesArray.Add(new List<decimal>() { key, values[key]["v"][0] });
+                pricesArray.Add(new List<string>() { key.ToString(), values[key]["v"][0].ToString() });
             }
             return JsonConvert.SerializeObject(pricesArray);
         }

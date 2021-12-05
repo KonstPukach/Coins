@@ -34,7 +34,7 @@ namespace CoinsServer.Controllers
         }
 
         [Route("history/{coinId}/{period}")]
-        [ResponseType(typeof(IList<IList<double>>))]
+        [ResponseType(typeof(IList<IList<string>>))]
         public async Task<HttpResponseMessage> GetCurrencyHistory(string coinId, string period)
         {
             return GetJsonResponse(await _coinsService.GetCurrencyHistory(coinId, period));
