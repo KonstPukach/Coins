@@ -68,6 +68,7 @@ namespace CoinsServer.Models
         public int? LastUpdated { get; set; }
 
         public ICollection<Alert> Alerts { get; set; }
+        public ICollection<FavoriteCoin> FavoriteCoins { get; set; }
 
         public static IList<Coin> Parse(string jsonCoin)
         {

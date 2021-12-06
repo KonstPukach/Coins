@@ -53,7 +53,8 @@ namespace CoinsServer.Services
         {
             try
             {
-                var dbCoin = new CoinsContext().Coins.FirstOrDefault(c => c.Id == coin.Id);
+                var db = new CoinsContext();
+                var dbCoin = db.Coins.FirstOrDefault(c => c.Id == coin.Id);
                 if (dbCoin == null)
                 {
                     db.Coins.Add(coin);

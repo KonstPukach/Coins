@@ -6,16 +6,17 @@ using System.Web;
 
 namespace CoinsServer.Models
 {
-    public class User
+    public class FavoriteCoin
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        public string Token { get; set; }
+        public string CoinId { get; set; }
+        public Coin Coin { get; set; }
 
-        public ICollection<Alert> Alerts { get; set; }
-
-        public ICollection<FavoriteCoin> FavoriteCoins { get; set; }
+        [Required]
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

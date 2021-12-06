@@ -181,6 +181,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AlertController.cs" />
     <Compile Include="Controllers\ConverterController.cs" />
+    <Compile Include="Controllers\FavoritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CoinsController.cs" />
     <Compile Include="Controllers\MarketStatsController.cs" />
@@ -211,12 +212,17 @@
     <Compile Include="Migrations\202112052053461_CoinsPrecision.Designer.cs">
       <DependentUpon>202112052053461_CoinsPrecision.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112061607436_Favorites.cs" />
+    <Compile Include="Migrations\202112061607436_Favorites.Designer.cs">
+      <DependentUpon>202112061607436_Favorites.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\CapShare.cs" />
     <Compile Include="Models\ChartTimeFilter.cs" />
     <Compile Include="Models\Coin.cs" />
     <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\FavoriteCoin.cs" />
     <Compile Include="Models\GlobalData.cs" />
     <Compile Include="Models\MonetaryCurrencies.cs" />
     <Compile Include="Models\Rates.cs" />
@@ -268,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112052053461_CoinsPrecision.resx">
       <DependentUpon>202112052053461_CoinsPrecision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112061607436_Favorites.resx">
+      <DependentUpon>202112061607436_Favorites.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

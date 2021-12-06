@@ -66,14 +66,14 @@ namespace CoinsServer.Models
                 user = db.Users.Add(user);
                 db.SaveChanges();
             }
-            User = user;
+            UserId = user.Id;
             var coin = db.Coins.FirstOrDefault(c => c.Id == alert.CoinId);
             if (coin == null)
             {
                 Task.Run(async () => await new CoinsService().GetCoin(alert.CoinId)).Wait();
                 coin = db.Coins.FirstOrDefault(c => c.Id == alert.CoinId);
             }
-            Coin = coin;
+            CoinId = coin.Id;
             Name = alert.Name;
             LowLimit = alert.LowLimit;
             HighLimit = alert.HighLimit;
