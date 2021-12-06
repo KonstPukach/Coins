@@ -110,14 +110,11 @@ namespace CoinsServer.Services
             return new
             {
                 to = alert.User.Token,
-                data = new
+                notification = new
                 {
-                    notification_body = $"Current {coin.Name} price is {coin.PriceUsd}$",
-                    notification_title = $"{coin.Name} price was changed!",
-                    alert_id = alert.AlertId,
-                    coin_id = alert.CoinId,
-                    coin_price_usd = coin.PriceUsd,
-                    icon_url = coin.IconUrl
+                    body = $"Current {coin.Name} price is {coin.PriceUsd}$",
+                    title = $"{coin.Name} price was changed!",
+                    icon = coin.IconUrl
                 },
                 priority = "high"
             };
