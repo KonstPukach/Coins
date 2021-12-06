@@ -40,7 +40,6 @@ class CoinViewHolder(
 
         favoriteView.setOnClickListener {
             onFavoriteClick(data)
-            it.isSelected = !it.isSelected
         }
 
         Glide.with(iconView)

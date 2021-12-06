@@ -12,7 +12,7 @@ class AllCryptoCoinsPresenter(
 ) {
 
     override fun init() {
-        with(CryptoCoinsRepository.init(applicationContext)) {
+        with(CryptoCoinsRepository.getInstance()) {
             addSubscription(getAllCoins().subscribe { view?.setData(it) })
             addSubscription(subscribeOnCoinsError { view?.showError() })
             addSubscription(subscribeOnRefreshState { view?.setRefreshState(it) })

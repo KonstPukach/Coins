@@ -14,8 +14,7 @@
     <string name="share_chooser_title">Share with …</string>
     <string name="share_app_chooser_title">Share app with …</string>
 
-    <string name="tofico_news_share_title">Tofico News</string>
-    <string name="tofico_news_share_body">There is an interesting article for you: %s</string>
+    <string name="coins_news_share_title">Crypto news</string>
 
     <string name="unable_to_open_browser">Unable to view in browser</string>
 
@@ -101,4 +100,5 @@
 
     <string name="alert_notification_title_format">%s price has changed!</string>
     <string name="alert_notification_body_format">Current %1$s price is %2$s$</string>
+    <string name="create">Create</string>
 </resources>

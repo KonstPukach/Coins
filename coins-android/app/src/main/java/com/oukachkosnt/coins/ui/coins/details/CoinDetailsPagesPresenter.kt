@@ -18,6 +18,7 @@ class CoinDetailsPagesPresenter(
     override fun init() {
         addSubscription(
             CryptoCoinsRepository
+                .getInstance()
                 .getCoinById(coinId)
                 .subscribe(
                     {
@@ -31,7 +32,7 @@ class CoinDetailsPagesPresenter(
 
     fun switchFavoriteStatus() {
         coin?.also {
-            CryptoCoinsRepository.switchFavoriteStatus(
+            CryptoCoinsRepository.getInstance().switchFavoriteStatus(
                 it,
                 prefs,
                 { view?.showFirstFavoriteHelpMessage() },

@@ -21,22 +21,33 @@ import io.reactivex.subjects.Subject
 import java.util.prefs.Preferences
 
 object CryptoCoinsRepository {
+   private var instance: CryptoCoinsRepositoryObject? = null
+
+    fun getInstance(): CryptoCoinsRepositoryObject = instance!!
+
+    fun init(applicationContext: Context) {
+        instance = CryptoCoinsRepositoryObject(applicationContext)
+    }
+}
+
+class CryptoCoinsRepositoryObject(private val applicationContext: Context) {
     private val coinsApi = CryptoCoinsApiService()
 
     private val allCoins      = BehaviorSubject.create<List<CryptoCoinData>>()
     private val isError       = BehaviorSubject.createDefault(false)
     private val isRefresh     = BehaviorSubject.createDefault(false)
     private val coinsFromApi = BehaviorSubject.create<List<CryptoCoinData>>()
-    private val favoriteCoins = BehaviorSubject.create<List<CryptoCoinData>>()
+
     private val top10Coins    = BehaviorSubject.create<TopCoins>()
     private var activeCoinsRequest: Disposable? = null
 
-    private lateinit var favsDb: FavsDatabase
+    private val favsDb: FavsDatabase = DbRepository.getFavsDb(applicationContext)
 
-    fun init(applicationContext: Context): CryptoCoinsRepository {
+    init {
+        init()
+    }
 
-        favsDb = DbRepository.getFavsDb(applicationContext)
-
+    fun init(): CryptoCoinsRepositoryObject {
         val favsFlowable = favsDb.favsDao().getFavs().toFlowable()
 
         Flowable.combineLatest(
@@ -65,8 +76,6 @@ object CryptoCoinsRepository {
             }
         return this
     }
-
-
 
     fun subscribeOnAllCoins(consumer: (List<CryptoCoinData>) -> Unit, onError: () -> Unit): Disposable {
         if (!coinsFromApi.hasValue()) {
@@ -113,7 +122,7 @@ object CryptoCoinsRepository {
         } else {
             favsDb.favsDao().insertFav(coin.mapToEntity()).doOnComplete(onFirstTimeFavorite).subscribe()
         }
-
+        init()
     }
 
     private fun loadAllCoins() {

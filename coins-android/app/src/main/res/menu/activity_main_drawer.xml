@@ -23,5 +23,9 @@
             android:id="@+id/nav_converter"
             android:icon="@drawable/ic_baseline_swap_horiz_24"
             android:title="@string/drawer_converter" />
+        <item
+            android:id="@+id/nav_alerts"
+            android:icon="@drawable/ic_bell_ring_black_36dp"
+            android:title="@string/drawer_alerts" />
     </group>
 </menu>

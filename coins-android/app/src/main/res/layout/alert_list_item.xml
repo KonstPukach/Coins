@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp"
+    android:layout_marginEnd="@dimen/list_content_horizontal_margin"
+    android:layout_marginStart="@dimen/list_content_horizontal_margin"
+    android:layout_marginTop="6dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="@dimen/card_elevation">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_medium">
+
+        <TextView
+            android:id="@+id/alert_coin_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_toStartOf="@+id/alert_delete"
+            android:textColor="@color/text_color_black"
+            android:textSize="@dimen/text_size_large"
+            tools:text="Coin Name" />
+
+        <ImageView
+            android:id="@+id/alert_delete"
+            android:layout_width="@dimen/close_icon_size"
+            android:layout_height="@dimen/close_icon_size"
+            android:padding="@dimen/margin_small"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_close_grey600_36dp"
+            android:background="?selectableItemBackgroundBorderless"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/alert_low_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alert_coin_name"
+            android:layout_marginBottom="@dimen/margin_small"
+            tools:text="Low limit: 12345678909876" />
+
+        <TextView
+            android:id="@+id/alert_high_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/alert_low_limit"
+            tools:text="High limit: 12345678909876" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

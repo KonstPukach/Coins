@@ -26,13 +26,6 @@ fun viewInBrowser(context: Context, url: String, onCannotResolve: () -> Unit) {
     IntentsBuilder.browserIntent(url).startActivityIfCanResolve(context, onCannotResolve)
 }
 
-fun shareNews(context: Context, url: String) {
-    IntentsBuilder.shareIntent(
-        context.getString(R.string.tofico_news_share_title),
-        context.getString(R.string.tofico_news_share_body, url)
-    ).startActivityViaChooser(context, R.string.share_chooser_title)
-}
-
 @SuppressLint("QueryPermissionsNeeded")
 private fun Intent.startActivityIfCanResolve(context: Context, onCannotResolve: () -> Unit) {
     if (resolveActivity(context.packageManager) != null) {

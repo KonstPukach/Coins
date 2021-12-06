@@ -11,8 +11,8 @@ class FavoriteCryptoCoinsPresenter(
 ) : SimpleCoinsListPresenter<FavoriteCryptoCoinsView>(view) {
 
     override fun init() {
-        addSubscription(CryptoCoinsRepository.getFavoriteCoins().subscribe { view?.setData(it) })
-        addSubscription(CryptoCoinsRepository.subscribeOnCoinsError { view?.showError() })
-        addSubscription(CryptoCoinsRepository.subscribeOnRefreshState { view?.setRefreshState(it) })
+        addSubscription(CryptoCoinsRepository.getInstance().getFavoriteCoins().subscribe { view?.setData(it) })
+        addSubscription(CryptoCoinsRepository.getInstance().subscribeOnCoinsError { view?.showError() })
+        addSubscription(CryptoCoinsRepository.getInstance().subscribeOnRefreshState { view?.setRefreshState(it) })
     }
 }

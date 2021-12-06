@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/nav_news"
         android:name="com.oukachkosnt.coins.ui.news.NewsListFragment"
-        android:label="@string/tofico_news_share_title" >
+        android:label="@string/coins_news_share_title" >
     </fragment>
 
     <fragment
@@ -33,6 +33,15 @@
         android:label="@string/drawer_converter" >
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_alerts"
+        android:name="com.oukachkosnt.coins.ui.alerts.AlertsFragment"
+        android:label="@string/drawer_alerts">
+        <action
+            android:id="@+id/action_nav_alerts_to_nav_create_alert"
+            app:destination="@id/nav_create_alert" />
+    </fragment>
+
     <activity
         android:id="@+id/nav_crypto_coin_details"
         android:name="com.oukachkosnt.coins.ui.coins.details.CoinDetailsPagesActivity"
@@ -41,5 +50,11 @@
             android:name="coinData"
             app:argType="com.oukachkosnt.coins.data.domain.CryptoCoinData"
             app:nullable="false"/>
+    </activity>
+
+    <activity
+        android:id="@+id/nav_create_alert"
+        android:name="com.oukachkosnt.coins.ui.alerts.create.CreateAlertActivity"
+        android:label="@string/title_activity_create_alert">
     </activity>
 </navigation>

@@ -10,7 +10,7 @@ class PageLoader<out T>(
     private val pageSize: Int = 20
 ) {
     private var hasMore = true
-    private var currentPage = 0
+    private var currentPage = 1
     private var activeSubscription: Disposable? = null
 
     private val isLoading  = BehaviorSubject.createDefault(false)
@@ -35,7 +35,7 @@ class PageLoader<out T>(
 
     fun reset() {
         hasMore = true
-        currentPage = 0
+        currentPage = 1
         activeSubscription?.dispose()
 
         isReset.onNext(true)

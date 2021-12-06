@@ -52,3 +52,8 @@ fun Double.formatDecimal(): String {
     decimalNumberFormatter.maximumFractionDigits = 12
     return decimalNumberFormatter.format(this)
 }
+
+fun Double.formatEditAlertPrice(): String {
+    decimalNumberFormatter.maximumFractionDigits = if (this > 1) 2 else 12
+    return decimalNumberFormatter.format(this)
+}

@@ -1,13 +1,15 @@
 package com.oukachkosnt.coins.data.api
 
-class NewsApiResponse(val news: List<NewsItemApiData>)
+class NewsApiResponse(val articles: List<NewsItemApiData>, val totalResults: Int)
+
+class Source (
+    val name: String
+)
 
 class NewsItemApiData(
-    val id: Int,
-    val name: String,
-    val datetime: String,
-    val source: String,
-    val link: String,
-    val image: String,
-    val views: Int
+    val title: String,
+    val publishedAt: String,
+    val source: Source,
+    val url: String,
+    val urlToImage: String
 )

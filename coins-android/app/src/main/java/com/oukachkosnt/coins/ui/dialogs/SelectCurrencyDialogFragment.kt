@@ -149,8 +149,6 @@ class SelectRealCurrencyDialogFragment : DialogFragment() {
         binding.searchEditText.addTextChangedListener { filter ->
             listAdapter.setDataList(data.filter { it.name.contains(filter, ignoreCase = true) })
         }
-
-        dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
     }
 
     private fun onItemClicked(clickedCurrency: Currency) {
