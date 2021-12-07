@@ -62,7 +62,6 @@ class CryptoCoinsFragment : Fragment() {
     }
 
     companion object {
-        private const val SORT_ORDER_DIALOG = "sortOrderDialogTag"
         private const val TOP_COINS_INDEX = 2
     }
 }

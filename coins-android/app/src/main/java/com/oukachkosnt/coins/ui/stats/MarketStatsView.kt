@@ -13,9 +13,5 @@ interface MarketStatsView : MvpView {
     fun setCapShareData(pies: List<PieEntry>)
     fun setCapShareError()
 
-    fun setCapHistoryShareDate(data: Map<String, List<Pair<Date, Double>>>, interval: TimeInterval)
-    fun setCapHistoryShareError()
-    fun setCapHistoryChartPage(interval: TimeInterval)
-
     fun setRefresh(isRefresh: Boolean)
 }

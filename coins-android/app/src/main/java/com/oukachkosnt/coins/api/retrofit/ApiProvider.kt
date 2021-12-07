@@ -5,9 +5,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiProvider {
-    private const val host = "http://10.0.2.2:61208/api/"
-
-    private const val coinMarketCapHost = "https://api.coinmarketcap.com/"
+    private const val host = "http://192.168.43.25:61208/api/"
 
     private fun getRetrofit(baseUrl: String = host)
         = Retrofit.Builder()
@@ -15,8 +13,6 @@ object ApiProvider {
               .addConverterFactory(GsonConverterFactory.create())
               .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
               .build()
-
-    val coinMarketCapApi: CoinMarketCapApi by lazy { getRetrofit(coinMarketCapHost).create(CoinMarketCapApi::class.java) }
 
     val cryptoCoinsApi: CryptoCoinsApi by lazy { getRetrofit().create(CryptoCoinsApi::class.java) }
 

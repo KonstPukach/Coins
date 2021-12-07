@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -71,7 +70,7 @@ class NewsListFragment : ListMvpFragment<List<NewsItemData>,
         override fun bind(data: NewsItemData) {
             titleView.text      = data.title
             sourceView.text     = data.source
-            postedAtView.text   = data.postedAt
+            postedAtView.text   = data.postedAt.replace(Regex("[TZ]"), " ")
 
             Glide.with(imageView)
                 .load(data.imageUrl)

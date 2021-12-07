@@ -6,8 +6,6 @@
     android:layout_height="wrap_content"
     tools:context="com.oukachkosnt.coins.ui.coins.details.coin.CoinDetailsFragment">
 
-    <!--Need to wrap CardView into other layout to prevent cutting from bottom.-->
-    <!--Seems like a bug in Android-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -87,8 +87,7 @@ class ConverterPresenter(view: ConverterView) : MvpPresenter<ConverterView>(view
         return rateDataSet?.let {
             it.currencies.map { it.targetCurrency }.sortedBy { it.name } +
                     it.cryptoCoins.map { it.targetCurrency }.sortedBy { it.name }
-        }
-            .orEmpty()
+        }.orEmpty()
     }
 
     private fun updateCurrentExchangeRate(base: Currency?, target: Currency?) {

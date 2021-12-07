@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.navigation.navArgs
-import androidx.viewpager.widget.ViewPager
 import com.oukachkosnt.coins.R
 import com.oukachkosnt.coins.data.domain.CryptoCoinData
 import com.oukachkosnt.coins.databinding.ActivityCoinDetailsBinding
@@ -43,15 +42,6 @@ class CoinDetailsPagesActivity :
         )
 
         binding.viewPager.adapter = ViewPagerAdapter(pages, supportFragmentManager)
-        binding.viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
-            override fun onPageSelected(position: Int) {
-                if (position == 0) {
-                    binding.fab.show()
-                } else {
-                    binding.fab.hide()
-                }
-            }
-        })
 
         binding.tabs.isVisible = true
         binding.tabs.setupWithViewPager(binding.viewPager)

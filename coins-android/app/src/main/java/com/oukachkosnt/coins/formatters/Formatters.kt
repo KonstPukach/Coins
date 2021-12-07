@@ -22,7 +22,7 @@ fun Double.formatPriceUsd(maxFractionDigits: Int? = null): String {
     return usdPriceFormatter.format(this)
 }
 
-fun Date.formatDateTime(): String = dateTimeFormatter.format(this)
+fun Date.formatDateTime(): String = dateTimeFormatter.format(Date(this.time + TIME_OFFSET))
 fun Date.formatTime(): String = timeFormatter.format(this)
 
 fun Double.formatPercent(): String = "%.2f %%".format(this)
@@ -57,3 +57,5 @@ fun Double.formatEditAlertPrice(): String {
     decimalNumberFormatter.maximumFractionDigits = if (this > 1) 2 else 12
     return decimalNumberFormatter.format(this)
 }
+
+private const val TIME_OFFSET = 60 * 3 * 60 * 1000L

@@ -114,9 +114,9 @@ class ConverterFragment : MvpFragment<ConverterPresenter>(R.layout.fragment_conv
         fun visibleIf(visibleState: ViewState) = if (state == visibleState) View.VISIBLE else View.INVISIBLE
 
         with (binding) {
-            binding.converterError.visibility = visibleIf(ViewState.SHOW_ERROR)
-            binding.converterLoading.visibility = visibleIf(ViewState.SHOW_LOADING)
-            binding.converterContent.visibility = visibleIf(ViewState.SHOW_CONTENT)
+            converterError.visibility = visibleIf(ViewState.SHOW_ERROR)
+            converterLoading.visibility = visibleIf(ViewState.SHOW_LOADING)
+            converterContent.visibility = visibleIf(ViewState.SHOW_CONTENT)
         }
 
         enableSwipeRefreshIfContentLoaded()
