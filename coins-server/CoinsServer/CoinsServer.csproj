@@ -181,6 +181,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AlertController.cs" />
     <Compile Include="Controllers\ConverterController.cs" />
+    <Compile Include="Controllers\FavoritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CoinsController.cs" />
     <Compile Include="Controllers\MarketStatsController.cs" />
@@ -191,15 +192,42 @@
     </Compile>
     <Compile Include="GlobalCache.cs" />
     <Compile Include="GlobalConfig.cs" />
+    <Compile Include="Migrations\202112041317474_InitialCreate.cs" />
+    <Compile Include="Migrations\202112041317474_InitialCreate.Designer.cs">
+      <DependentUpon>202112041317474_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112042145188_AlertStructureUpdate.cs" />
+    <Compile Include="Migrations\202112042145188_AlertStructureUpdate.Designer.cs">
+      <DependentUpon>202112042145188_AlertStructureUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112051856503_Users.cs" />
+    <Compile Include="Migrations\202112051856503_Users.Designer.cs">
+      <DependentUpon>202112051856503_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112052002551_Coin.cs" />
+    <Compile Include="Migrations\202112052002551_Coin.Designer.cs">
+      <DependentUpon>202112052002551_Coin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112052053461_CoinsPrecision.cs" />
+    <Compile Include="Migrations\202112052053461_CoinsPrecision.Designer.cs">
+      <DependentUpon>202112052053461_CoinsPrecision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112061607436_Favorites.cs" />
+    <Compile Include="Migrations\202112061607436_Favorites.Designer.cs">
+      <DependentUpon>202112061607436_Favorites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\CapShare.cs" />
     <Compile Include="Models\ChartTimeFilter.cs" />
     <Compile Include="Models\Coin.cs" />
     <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\FavoriteCoin.cs" />
     <Compile Include="Models\GlobalData.cs" />
     <Compile Include="Models\MonetaryCurrencies.cs" />
     <Compile Include="Models\Rates.cs" />
     <Compile Include="Models\CoinsContext.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AlertService.cs" />
     <Compile Include="Services\CoinsService.cs" />
@@ -230,6 +258,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202112041317474_InitialCreate.resx">
+      <DependentUpon>202112041317474_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112042145188_AlertStructureUpdate.resx">
+      <DependentUpon>202112042145188_AlertStructureUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112051856503_Users.resx">
+      <DependentUpon>202112051856503_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112052002551_Coin.resx">
+      <DependentUpon>202112052002551_Coin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112052053461_CoinsPrecision.resx">
+      <DependentUpon>202112052053461_CoinsPrecision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112061607436_Favorites.resx">
+      <DependentUpon>202112061607436_Favorites.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

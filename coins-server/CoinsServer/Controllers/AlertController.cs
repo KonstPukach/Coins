@@ -14,18 +14,25 @@ namespace CoinsServer.Controllers
     public class AlertController : AppCoinsApiController
     {
         private CoinsContext db = new CoinsContext();
+        private IQueryable<Alert> Alerts => db.Alerts.Include(a => a.User);
 
         [Route("")]
-        public IEnumerable<Alert> GetAlerts()
+        public IEnumerable<AlertDto> GetAlerts()
         {
-            return db.Alerts;
+            return Alerts.ToList().Select(alert => new AlertDto(alert));
+        }
+
+        [Route("user")]
+        public IEnumerable<AlertDto> GetAlerts(string token)
+        {
+            return Alerts.Where(alert => alert.User.Token == token).ToList().Select(alert => new AlertDto(alert));
         }
 
         [Route("{id:int}")]
-        [ResponseType(typeof(Alert))]
+        [ResponseType(typeof(AlertDto))]
         public async Task<IHttpActionResult> GetAlert(int id)
         {
-            var alert = await db.Alerts.Where(b => b.AlertId == id).FirstOrDefaultAsync();
+            var alert = await Alerts.Where(b => b.AlertId == id).FirstOrDefaultAsync();
             if (alert == null)
             {
                 return NotFound();
@@ -34,15 +41,15 @@ namespace CoinsServer.Controllers
         }
 
         [Route("create")]
-        [ResponseType(typeof(Alert))]
+        [ResponseType(typeof(AlertDto))]
         [HttpPost]
-        public IHttpActionResult CreateAlert([FromBody] Alert alert)
+        public IHttpActionResult CreateAlert([FromBody] AlertDto alert)
         {
             if (alert == null || !ModelState.IsValid)
             {
                 return BadRequest("Invalid data.");
             }
-            db.Alerts.Add(alert);
+            db.Alerts.Add(new Alert(alert));
             db.SaveChanges();
             return Ok(alert);
         }
@@ -64,9 +71,9 @@ namespace CoinsServer.Controllers
         }
 
         [Route("update")]
-        [ResponseType(typeof(Alert))]
+        [ResponseType(typeof(AlertDto))]
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateAlert(Alert alert)
+        public async Task<IHttpActionResult> UpdateAlert(AlertDto alert)
         {
             if (alert == null || !ModelState.IsValid)
             {
@@ -81,7 +88,6 @@ namespace CoinsServer.Controllers
             alertFromDb.CoinId = alert.CoinId;
             alertFromDb.HighLimit = alert.HighLimit;
             alertFromDb.LowLimit = alert.LowLimit;
-            alertFromDb.Token = alert.Token;
             db.SaveChanges();
             return Ok(alertFromDb);
         }

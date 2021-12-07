@@ -46,7 +46,7 @@ namespace CoinsServer.Services
         {
             var share = new CapShare
             {
-                CoinId = coin.CoinId,
+                CoinId = coin.Id,
                 Name = coin.Name,
                 Share = sharePercentage
             };

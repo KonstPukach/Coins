@@ -33,7 +33,7 @@ namespace CoinsServer.Services
         {
             return new Currency
             {
-                CurrencyId = coin.CoinId,
+                CurrencyId = coin.Id,
                 Name = coin.Name,
                 Rate = coin.PriceUsd.HasValue ? 1 / coin.PriceUsd : 0
             };
